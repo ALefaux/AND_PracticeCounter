@@ -1,4 +1,4 @@
-package fr.alefaux.practicecounter.ui.theme
+package fr.alefaux.practicecounter.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

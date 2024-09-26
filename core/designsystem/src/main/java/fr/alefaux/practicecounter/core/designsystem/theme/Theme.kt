@@ -1,4 +1,4 @@
-package fr.alefaux.practicecounter.ui.theme
+package fr.alefaux.practicecounter.core.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

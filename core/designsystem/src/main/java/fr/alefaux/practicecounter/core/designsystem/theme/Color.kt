@@ -1,4 +1,4 @@
-package fr.alefaux.practicecounter.ui.theme
+package fr.alefaux.practicecounter.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
