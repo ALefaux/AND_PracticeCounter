@@ -23,6 +23,8 @@ dependencyResolutionManagement {
 rootProject.name = "Practice-Counter"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":core")
-include(":feature:practice")
 include(":core:designsystem")
+include(":feature:practice:list:ui")
+include(":feature:practice:list:panes")
+include(":feature:practice:list:model-ui")
+include(":feature:practice:list:presentation")

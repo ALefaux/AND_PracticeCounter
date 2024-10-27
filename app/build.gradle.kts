@@ -51,6 +51,9 @@ android {
 dependencies {
     implementation(projects.core.designsystem)
 
+    // AppWrite
+    implementation(libs.appwrite.android)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
 
