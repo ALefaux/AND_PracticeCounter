@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.practicecounter.android.application)
     alias(libs.plugins.practicecounter.android.application.compose)
@@ -14,6 +16,24 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        //load the values from .properties file
+        val keystoreFile = project.rootProject.file("secrets.properties")
+        val properties = Properties()
+        properties.load(keystoreFile.inputStream())
+
+        //return empty key in case something goes wrong
+        val appWriteProjectId = properties.getProperty("APPWRITE_PROJECT_ID") ?: ""
+
+        buildConfigField(
+            type = "String",
+            name = "APPWRITE_PROJECT_ID",
+            value = appWriteProjectId
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -31,4 +51,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
+
+    // AppWrite
+    implementation(libs.appwrite.android)
 }
