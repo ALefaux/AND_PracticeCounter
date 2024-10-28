@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -19,6 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Practice Counter"
+rootProject.name = "Practice-Counter"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":feature:practice")
