@@ -45,5 +45,17 @@ gradlePlugin {
             id = "practicecounter.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidFeature") {
+            id = "practicecounter.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
+        register("AndroidLibraryCompose") {
+            id = "practicecounter.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "practicecounter.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
     }
 }

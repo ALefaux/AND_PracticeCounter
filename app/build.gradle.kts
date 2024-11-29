@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.practicecounter.android.application)
     alias(libs.plugins.practicecounter.android.application.compose)
     alias(libs.plugins.practicecounter.android.hilt)
-    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -49,6 +48,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.designsystem)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
 
