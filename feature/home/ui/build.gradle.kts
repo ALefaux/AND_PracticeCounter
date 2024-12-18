@@ -1,11 +1,9 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.practicecounter.ui)
 }
 
 android {
-    namespace = "fr.alefaux.practicecounter.practice.ui"
+    namespace = "fr.alefaux.practicecounter.feature.home.ui"
 }
 
 dependencies {

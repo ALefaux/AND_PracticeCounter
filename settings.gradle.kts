@@ -24,7 +24,18 @@ rootProject.name = "Practice-Counter"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":core:designsystem")
-include(":feature:practice:list:ui")
-include(":feature:practice:list:panes")
-include(":feature:practice:list:model-ui")
-include(":feature:practice:list:presentation")
+
+// Practice list
+include(
+    ":feature:practice:list:ui",
+    ":feature:practice:list:panes",
+    ":feature:practice:list:model-ui",
+    ":feature:practice:list:presentation"
+)
+
+// Home
+include(
+    ":feature:home:presentation",
+    ":feature:home:panes",
+    ":feature:home:ui"
+)

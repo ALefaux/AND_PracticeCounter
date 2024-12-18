@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import fr.alefaux.practicecounter.feature.practice.list.modelui.PracticeUi
 
 @Composable
-fun PracticeScreen(
+fun PracticeListPane(
     practices: List<PracticeUi>,
     modifier: Modifier = Modifier
 ) {

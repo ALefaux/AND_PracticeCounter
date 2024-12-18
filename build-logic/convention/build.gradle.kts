@@ -45,17 +45,38 @@ gradlePlugin {
             id = "practicecounter.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
-        register("androidFeature") {
-            id = "practicecounter.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
+
+        register("dataLocal") {
+            id = "practicecounter.data.local"
+            implementationClass = "plugins.DataLocalConventionPlugin"
         }
-        register("AndroidLibraryCompose") {
-            id = "practicecounter.android.library.compose"
-            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        register("dataRemote") {
+            id = "practicecounter.data.remote"
+            implementationClass = "plugins.DataRemoteConventionPlugin"
         }
-        register("androidLibrary") {
-            id = "practicecounter.android.library"
-            implementationClass = "AndroidLibraryConventionPlugin"
+        register("di") {
+            id = "practicecounter.di"
+            implementationClass = "plugins.DiConventionPlugin"
+        }
+        register("domain") {
+            id = "practicecounter.domain"
+            implementationClass = "plugins.DomainConventionPlugin"
+        }
+        register("modelUiLocal") {
+            id = "practicecounter.model.ui"
+            implementationClass = "plugins.ModelUIConventionPlugin"
+        }
+        register("panes") {
+            id = "practicecounter.panes"
+            implementationClass = "plugins.PanesConventionPlugin"
+        }
+        register("presentation") {
+            id = "practicecounter.presentation"
+            implementationClass = "plugins.PresentationConventionPlugin"
+        }
+        register("ui") {
+            id = "practicecounter.ui"
+            implementationClass = "plugins.UIConventionPlugin"
         }
     }
 }
