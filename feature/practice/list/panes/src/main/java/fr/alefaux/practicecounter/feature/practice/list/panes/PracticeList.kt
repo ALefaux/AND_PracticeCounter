@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import fr.alefaux.practicecounter.core.designsystem.theme.PracticeCounterTheme
+import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 import fr.alefaux.practicecounter.feature.practice.list.modelui.PracticeUi
 import fr.alefaux.practicecounter.practice.list.ui.PracticeItem
 
@@ -40,7 +40,7 @@ fun PracticeList(
 @PreviewLightDark
 @PreviewFontScale
 private fun PracticeListPreview() {
-    PracticeCounterTheme {
+    AppTheme {
         PracticeList(
             onPracticeClicked = {},
             practices = listOf(
