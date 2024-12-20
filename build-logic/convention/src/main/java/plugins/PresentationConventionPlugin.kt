@@ -33,7 +33,6 @@ class PresentationConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", libs.findLibrary("androidx.compose.material3").get())
-                add("implementation", libs.findLibrary("androidx.compose.navigation").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.graphics").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())

@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
-import fr.alefaux.practicecounter.feature.home.presentation.HomeScreen
+import fr.alefaux.practicecounter.navigation.AppNavHost
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
+                    AppNavHost(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
