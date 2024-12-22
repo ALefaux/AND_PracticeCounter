@@ -2,12 +2,17 @@ package fr.alefaux.practicecounter.feature.practice.list.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import fr.alefaux.practicecounter.feature.practice.list.panes.PracticeListPane
 
 @Composable
-fun PracticeListVM(
+fun PracticeListScreen(
     modifier: Modifier = Modifier,
     viewModel: PracticeListViewModel = viewModel()
 ) {
-
+    PracticeListState(
+        modifier = modifier,
+        state = viewModel.state.collectAsStateWithLifecycle().value
+    )
 }

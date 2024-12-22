@@ -1,7 +1,7 @@
 import com.android.build.api.dsl.ApplicationExtension
-import fr.alefaux.practicecounter.build_logic.convention.alias
-import fr.alefaux.practicecounter.build_logic.convention.configureAndroidCompose
-import fr.alefaux.practicecounter.build_logic.convention.libs
+import fr.alefaux.buildlogic.configureAndroidCompose
+import fr.alefaux.buildlogic.extensions.alias
+import fr.alefaux.buildlogic.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType

@@ -48,10 +48,18 @@ android {
 }
 
 dependencies {
+    implementation(projects.feature.home.presentation)
+
     implementation(projects.core.designsystem)
 
     implementation(libs.androidx.core.ktx)
+
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.navigation)
+
 
     // AppWrite
     implementation(libs.appwrite.android)

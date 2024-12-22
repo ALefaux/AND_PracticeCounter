@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import fr.alefaux.practicecounter.core.designsystem.theme.PracticeCounterTheme
+import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
 @Composable
 fun PracticeItem(
@@ -44,7 +44,7 @@ fun PracticeItem(
 @PreviewLightDark
 @PreviewFontScale
 private fun PracticeItemPreview() {
-    PracticeCounterTheme {
+    AppTheme {
         PracticeItem(
             modifier = Modifier.width(300.dp),
             onClick = {},
