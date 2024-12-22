@@ -5,7 +5,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import fr.alefaux.practicecounter.feature.home.presentation.HomeScreen
 
-fun NavGraphBuilder.homeNavigation() {
+fun NavGraphBuilder.homeNavigation(
+    onAddClicked: () -> Unit
+) {
     navigation(
         route = AppDestinations.Home.ROOT,
         startDestination = AppDestinations.Home.ROUTE
@@ -13,7 +15,9 @@ fun NavGraphBuilder.homeNavigation() {
         composable(
             route = AppDestinations.Home.ROUTE
         ) {
-            HomeScreen()
+            HomeScreen(
+                onAddClicked = onAddClicked
+            )
         }
     }
 }

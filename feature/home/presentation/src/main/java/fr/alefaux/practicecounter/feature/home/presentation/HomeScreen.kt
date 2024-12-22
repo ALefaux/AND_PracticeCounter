@@ -6,9 +6,11 @@ import fr.alefaux.practicecounter.feature.home.panes.HomePane
 
 @Composable
 fun HomeScreen(
+    onAddClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     HomePane(
-        modifier = modifier
+        modifier = modifier,
+        onAddClicked = onAddClicked
     )
 }
