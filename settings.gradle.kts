@@ -39,3 +39,8 @@ include(
     ":feature:home:panes",
     ":feature:home:ui"
 )
+
+// Practice add
+include(":feature:add:ui")
+include(":feature:add:panes")
+include(":feature:add:presentation")
