@@ -41,6 +41,8 @@ include(
 )
 
 // Practice add
-include(":feature:add:ui")
-include(":feature:add:panes")
-include(":feature:add:presentation")
+include(
+    ":feature:add:ui",
+    ":feature:add:panes",
+    ":feature:add:presentation"
+)
