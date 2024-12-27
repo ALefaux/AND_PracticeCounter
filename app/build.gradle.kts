@@ -48,9 +48,10 @@ android {
 }
 
 dependencies {
-    implementation(projects.feature.home.presentation)
-
     implementation(projects.core.designsystem)
+
+    implementation(projects.feature.add.presentation)
+    implementation(projects.feature.home.presentation)
 
     implementation(libs.androidx.core.ktx)
 

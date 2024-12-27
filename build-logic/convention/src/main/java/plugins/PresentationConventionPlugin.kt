@@ -37,6 +37,7 @@ class PresentationConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.compose.ui.graphics").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling.preview").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.compose").get())
                 add("implementation", libs.findLibrary("kotlinx.immutable").get())
                 add("debugImplementation", libs.findLibrary("androidx.compose.manifest").get())
                 add("implementation", libs.findLibrary("jakewharton.timber").get())
