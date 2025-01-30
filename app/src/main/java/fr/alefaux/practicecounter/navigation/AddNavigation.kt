@@ -4,7 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import fr.alefaux.practicecounter.feature.add.presentation.AddPracticeScreen
+import fr.alefaux.practicecounter.feature.practice.add.presentation.AddPracticeScreen
 
 fun NavGraphBuilder.addNavigation(
     navController: NavHostController

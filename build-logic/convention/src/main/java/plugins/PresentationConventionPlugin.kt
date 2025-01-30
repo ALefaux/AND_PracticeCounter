@@ -43,6 +43,7 @@ class PresentationConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("jakewharton.timber").get())
 
                 implementation(libs.findLibrary("hilt-android").get())
+                implementation(libs.findLibrary("hilt-navigation-compose").get())
                 "ksp"(libs.findLibrary("hilt-compiler").get())
             }
         }

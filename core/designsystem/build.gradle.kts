@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace = "fr.alefaux.practicecounter.core.designsystem"
-    compileSdk = libs.versions.androidCompileSdk.get().toString().toInt()
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = libs.versions.androidMinSdk.get().toString().toInt()
+        minSdk = libs.versions.androidMinSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
