@@ -50,8 +50,8 @@ android {
 dependencies {
     implementation(projects.core.designsystem)
 
-    implementation(projects.feature.add.presentation)
-    implementation(projects.feature.home.presentation)
+    // implementation(projects.feature.practice.add.presentation)
+    // implementation(projects.feature.home.presentation)
 
     implementation(libs.androidx.core.ktx)
 
@@ -61,7 +61,14 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.navigation)
 
-
     // AppWrite
     implementation(libs.appwrite.android)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
+    // Timber
+    implementation(libs.jakewharton.timber)
 }

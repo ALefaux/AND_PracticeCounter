@@ -36,6 +36,9 @@ internal fun Project.configureAndroidCompose(commonExtension: CommonExtension<*,
             add("implementation", platform(bom))
             add("androidTestImplementation", platform(bom))
             add("debugImplementation", platform(bom))
+            add("implementation", libs.findLibrary("androidx.compose.material3").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui.tooling.preview").get())
         }
     }
 }

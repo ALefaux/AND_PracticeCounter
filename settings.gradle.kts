@@ -42,7 +42,9 @@ include(
 
 // Practice add
 include(
-    ":feature:add:ui",
-    ":feature:add:panes",
-    ":feature:add:presentation"
+    ":feature:practice:add:ui",
+    ":feature:practice:add:panes",
+    ":feature:practice:add:presentation",
+    ":feature:practice:add:data"
 )
+include(":core:storage")
