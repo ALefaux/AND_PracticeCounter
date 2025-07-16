@@ -1,16 +1,65 @@
 package fr.alefaux.practicecounter.feature.home.presentation
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import fr.alefaux.practicecounter.feature.home.pane.HomePane
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
+import fr.alefaux.practicecounter.core.utils.navigation.LocalNavHostController
+import fr.alefaux.practicecounter.core.utils.navigation.LocalTopBarInfo
+import fr.alefaux.practicecounter.feature.home.pane.HomeState
+import fr.alefaux.practicecounter.navigation.AppRoutes
 
 @Composable
 fun HomeScreen(
-    onAddClicked: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController = LocalNavHostController.current,
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    HomePane(
-        modifier = modifier,
-        onAddClicked = onAddClicked
-    )
+    val topBarInfo =
+        remember {
+            PracticeCounterTopBarInfo(
+                title = "Activités du jour",
+            )
+        }
+
+    CompositionLocalProvider(
+        LocalTopBarInfo provides topBarInfo,
+    ) {
+        Column {
+            HomeState(
+                modifier = modifier.weight(1f),
+                onPracticeClicked = {},
+                state = viewModel.uiState.collectAsStateWithLifecycle().value,
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+            ) {
+                Button(
+                    modifier = Modifier.padding(16.dp),
+                    onClick = {
+                        navController.navigate(
+                            route = AppRoutes.Practice.Add.constructTemplateRoute(),
+                        )
+                    },
+                ) {
+                    Text(
+                        text = "Ajouter",
+                    )
+                }
+            }
+        }
+    }
 }

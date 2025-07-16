@@ -1,25 +1,26 @@
 [versions]
-activityCompose = "1.9.3"
+activityCompose = "1.10.1"
 androidCompileSdk = "35"
-androidDesugar = "2.1.4"
-androidGradlePlugin = "8.8.0"
+androidDesugar = "2.1.5"
+androidGradlePlugin = "8.9.2"
 androidMinSdk = "26"
 androidTargetSdk = "35"
-androidTools = "31.7.3"
-androidxComposeNavigation = "2.8.5"
+androidTools = "31.9.2"
+androidxComposeNavigation = "2.8.9"
 androidxLifecycleViewModelCompose = "2.8.7"
 appcompat = "1.7.0"
 appwrite = "6.0.0"
-composeBom = "2024.12.01"
-coreKtx = "1.15.0"
+composeBom = "2025.04.01"
+coreKtx = "1.16.0"
 hilt = "2.51.1"
-hiltNavigationCompose = "1.1.0"
+hiltNavigationCompose = "1.2.0"
 kotlin = "2.1.0"
 kotlinxImmutable = "0.3.8"
 kotlinxSerialization = "1.7.3"
 ksp = "2.1.0-1.0.29"
 material = "1.12.0"
-room = "2.6.1"
+materialIcons = "1.7.8"
+room = "2.7.1"
 timber = "5.0.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -31,6 +32,8 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material-core = { group = "androidx.compose.material", name = "material-icons-core-android", version.ref = "materialIcons" }
+androidx-compose-material-extended = { group = "androidx.compose.material", name = "material-icons-extended-android", version.ref = "materialIcons" }
 androidx-compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxComposeNavigation" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }

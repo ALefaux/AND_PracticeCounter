@@ -16,18 +16,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        //load the values from .properties file
+        // load the values from .properties file
         val keystoreFile = project.rootProject.file("secrets.properties")
         val properties = Properties()
         properties.load(keystoreFile.inputStream())
 
-        //return empty key in case something goes wrong
+        // return empty key in case something goes wrong
         val appWriteProjectId = properties.getProperty("APPWRITE_PROJECT_ID") ?: ""
 
         buildConfigField(
             type = "String",
             name = "APPWRITE_PROJECT_ID",
-            value = appWriteProjectId
+            value = appWriteProjectId,
         )
     }
 
@@ -41,7 +41,7 @@ android {
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -71,4 +71,8 @@ dependencies {
 
     // Timber
     implementation(libs.jakewharton.timber)
+
+    // Material Icons
+    implementation(libs.androidx.compose.material.core)
+    implementation(libs.androidx.compose.material.extended)
 }

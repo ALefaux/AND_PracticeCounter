@@ -12,9 +12,8 @@ import io.appwrite.Client
 @Module
 @InstallIn(ActivityComponent::class)
 object AppWriteModule {
-
     @Provides
     fun provideAppWriteInstance(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): Client = Client(context).setProject(BuildConfig.APPWRITE_PROJECT_ID)
 }

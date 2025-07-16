@@ -2,7 +2,6 @@ package fr.alefaux.practicecounter.feature.practice.list.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.alefaux.practicecounter.feature.practice.list.presentation.model.PracticeListUiState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

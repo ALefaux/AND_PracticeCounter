@@ -4,8 +4,10 @@ import fr.alefaux.practicecounter.feature.practice.add.data.AddPracticeRepositor
 import fr.alefaux.practicecounter.feature.practice.add.domain.model.AddPractice
 import javax.inject.Inject
 
-class CreatePracticeUseCaseImpl @Inject constructor(
-    private val addPracticeRepository: AddPracticeRepository
-): CreatePracticeUseCase {
-    override suspend operator fun invoke(addPractice: AddPractice) = addPracticeRepository.create(addPractice)
-}
+class CreatePracticeUseCaseImpl
+    @Inject
+    constructor(
+        private val addPracticeRepository: AddPracticeRepository,
+    ) : CreatePracticeUseCase {
+        override suspend operator fun invoke(addPractice: AddPractice) = addPracticeRepository.create(addPractice)
+    }

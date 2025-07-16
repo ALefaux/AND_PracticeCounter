@@ -13,14 +13,10 @@ import fr.alefaux.practicecounter.feature.practice.add.domain.CreatePracticeUseC
 @Module
 @InstallIn(ViewModelComponent::class)
 class PracticeAddModule {
+    @Provides
+    fun providePracticeRepository(practiceDao: PracticeDao): AddPracticeRepository = AddPracticeRepositoryImpl(practiceDao)
 
     @Provides
-    fun providePracticeRepository(
-        practiceDao: PracticeDao
-    ): AddPracticeRepository = AddPracticeRepositoryImpl(practiceDao)
-
-    @Provides
-    fun provideCreatePracticeUseCase(
-        addPracticeRepository: AddPracticeRepository
-    ): CreatePracticeUseCase = CreatePracticeUseCaseImpl(addPracticeRepository)
+    fun provideCreatePracticeUseCase(addPracticeRepository: AddPracticeRepository): CreatePracticeUseCase =
+        CreatePracticeUseCaseImpl(addPracticeRepository)
 }

@@ -10,15 +10,15 @@ import androidx.compose.ui.Modifier
 @Composable
 fun AddFloatingActionButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     FloatingActionButton(
         modifier = modifier,
-        onClick = onClick
+        onClick = onClick,
     ) {
         Icon(
             contentDescription = null,
-            imageVector = Icons.TwoTone.Add
+            imageVector = Icons.TwoTone.Add,
         )
     }
 }

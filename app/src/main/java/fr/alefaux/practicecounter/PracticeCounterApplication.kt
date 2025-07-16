@@ -5,7 +5,7 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class PracticeCounterApplication: Application() {
+class PracticeCounterApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 

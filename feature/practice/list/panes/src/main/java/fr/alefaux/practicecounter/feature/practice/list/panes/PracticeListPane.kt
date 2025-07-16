@@ -7,11 +7,11 @@ import fr.alefaux.practicecounter.feature.practice.list.modelui.PracticeUi
 @Composable
 fun PracticeListPane(
     practices: List<PracticeUi>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     PracticeList(
         modifier = modifier,
         onPracticeClicked = { practice -> },
-        practices = practices
+        practices = practices,
     )
 }

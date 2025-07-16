@@ -65,7 +65,7 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
                     "-opt-in=kotlinx.coroutines.FlowPreview",
                     "-opt-in=kotlin.Experimental",
                     // Enable Kotlinx Serialization
-                    "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+                    "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
                 ).forEach { freeCompilerArgs.add(it) }
             }
         }

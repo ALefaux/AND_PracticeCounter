@@ -30,14 +30,14 @@ include(
     ":feature:practice:list:ui",
     ":feature:practice:list:panes",
     ":feature:practice:list:model-ui",
-    ":feature:practice:list:presentation"
+    ":feature:practice:list:presentation",
 )
 
 // Home
 include(
     ":feature:home:presentation",
     ":feature:home:panes",
-    ":feature:home:ui"
+    ":feature:home:ui",
 )
 
 // Practice add
@@ -45,6 +45,7 @@ include(
     ":feature:practice:add:ui",
     ":feature:practice:add:panes",
     ":feature:practice:add:presentation",
-    ":feature:practice:add:data"
+    ":feature:practice:add:data",
 )
 include(":core:storage")
+include(":feature:home:data")

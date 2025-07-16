@@ -1,38 +1,52 @@
 package fr.alefaux.practicecounter.feature.home.pane
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
-import fr.alefaux.practicecounter.feature.home.ui.AddFloatingActionButton
+import fr.alefaux.practicecounter.feature.home.modelui.PracticeUi
+import fr.alefaux.practicecounter.feature.home.modelui.mock.mockPracticeUi
 import fr.alefaux.practicecounter.feature.home.ui.Tile
 
 @Composable
 fun HomePane(
+    onPracticeClicked: (practiceId: Int) -> Unit,
+    practicesOfTheDay: List<PracticeUi>,
     modifier: Modifier = Modifier,
-    onAddClicked: () -> Unit
 ) {
-    Scaffold(
+    Column(
         modifier = modifier,
-        floatingActionButton = {
-            AddFloatingActionButton(
-                onClick = onAddClicked
-            )
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier.padding(innerPadding).padding(16.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Tile(
-                modifier = Modifier.fillMaxWidth(),
-                title = "Pompe"
-            )
+            items(practicesOfTheDay) { practice ->
+                Tile.Neutral(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onPracticeClicked(practice.id)
+                            },
+                    objective = practice.objective,
+                    number = practice.number,
+                    title = practice.title,
+                )
+            }
         }
     }
 }
@@ -42,6 +56,9 @@ fun HomePane(
 @PreviewFontScale
 private fun HomePanePreview() {
     AppTheme {
-        HomePane {}
+        HomePane(
+            onPracticeClicked = {},
+            practicesOfTheDay = listOf(mockPracticeUi),
+        )
     }
 }
