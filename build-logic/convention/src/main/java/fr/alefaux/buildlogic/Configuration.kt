@@ -21,7 +21,6 @@ import fr.alefaux.buildlogic.extensions.androidTargetSdkVersion
 import fr.alefaux.buildlogic.extensions.libs
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.provideDelegate
 
 /**
  * Add base configuration for Gradle module in the project (Ktlint, flavors, Kotlin)
@@ -38,7 +37,7 @@ internal fun Project.configureModule() {
             debug {
                 signingConfig =
                     signingConfigs.getByName(
-                        "debug"
+                        "debug",
                     )
 
                 isShrinkResources = false
@@ -51,7 +50,7 @@ internal fun Project.configureModule() {
             java.srcDir("src/main/java")
             java.srcDir("src/main/kotlin")
         }
-        
+
         lint {
             abortOnError = false
             checkDependencies = true
@@ -62,8 +61,8 @@ internal fun Project.configureModule() {
                     "MissingTranslation",
                     "ResourceType",
                     "WrongViewCast",
-                    "ExtraTranslation"
-                )
+                    "ExtraTranslation",
+                ),
             )
             htmlReport = true
             xmlReport = true

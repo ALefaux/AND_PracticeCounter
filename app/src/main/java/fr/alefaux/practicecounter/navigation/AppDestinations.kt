@@ -1,13 +1,28 @@
 package fr.alefaux.practicecounter.navigation
 
-object AppDestinations {
-    object Home {
-        const val ROOT = "home"
-        const val ROUTE = "$ROOT/home"
+import fr.alefaux.practicecounter.core.utils.navigation.Route
+import fr.alefaux.practicecounter.core.utils.navigation.RouteTemplate
+
+internal sealed interface AppRoutes :
+    Route,
+    RouteTemplate {
+    data object Home : AppRoutes, Route, RouteTemplate {
+        override val template: RouteTemplate = this
+
+        override fun constructTemplateRoute(): String = "app/home"
     }
 
-    object Add {
-        const val ROOT = "add"
-        const val ROUTE = "$ROOT/add"
+    sealed interface Practice : AppRoutes, Route, RouteTemplate {
+        data object Add : Practice, Route, RouteTemplate {
+            override val template: RouteTemplate = this
+
+            override fun constructTemplateRoute(): String = "app/practice/add"
+        }
+
+        data object Detail : Practice, Route, RouteTemplate {
+            override val template: RouteTemplate = this
+
+            override fun constructTemplateRoute(): String = "app/practice/detail"
+        }
     }
 }

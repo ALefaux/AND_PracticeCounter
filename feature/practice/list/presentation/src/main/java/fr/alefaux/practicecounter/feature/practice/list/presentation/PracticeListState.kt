@@ -8,14 +8,14 @@ import fr.alefaux.practicecounter.feature.practice.list.presentation.model.Pract
 @Composable
 fun PracticeListState(
     state: PracticeListUiState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     when (state) {
         is PracticeListUiState.Loading -> {}
         is PracticeListUiState.Success -> {
             PracticeListPane(
                 modifier = modifier,
-                practices = state.practices
+                practices = state.practices,
             )
         }
     }

@@ -8,10 +8,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun PracticeListScreen(
     modifier: Modifier = Modifier,
-    viewModel: PracticeListViewModel = viewModel()
+    viewModel: PracticeListViewModel = viewModel(),
 ) {
     PracticeListState(
         modifier = modifier,
-        state = viewModel.state.collectAsStateWithLifecycle().value
+        state = viewModel.state.collectAsStateWithLifecycle().value,
     )
 }

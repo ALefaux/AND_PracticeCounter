@@ -7,12 +7,9 @@ import fr.alefaux.buildlogic.extensions.implementation
 import fr.alefaux.buildlogic.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 class PresentationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {

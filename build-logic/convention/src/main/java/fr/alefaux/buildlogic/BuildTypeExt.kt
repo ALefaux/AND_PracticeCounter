@@ -1,9 +1,7 @@
 package fr.alefaux.buildlogic
 
 import com.android.build.api.dsl.ApplicationBuildType
-import com.android.build.api.dsl.BuildType
 import com.android.build.gradle.BaseExtension
-import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
 import java.io.File
 
@@ -24,4 +22,3 @@ fun ApplicationBuildType.enableMinification(project: Project) {
     proguardFile(File(project.projectDir, "proguard/proguard-navigation.pro"))
     proguardFile(File(project.projectDir, "proguard/proguard-s2s.pro"))
 }
-

@@ -24,7 +24,7 @@ fun ObjectiveField(
         placeholder = {
             Text("Objectif")
         },
-        value = value
+        value = value,
     )
 }
 
@@ -36,7 +36,7 @@ private fun ObjectiveFieldPreview() {
         Surface {
             ObjectiveField(
                 onValueChanged = {},
-                value = ""
+                value = "",
             )
         }
     }

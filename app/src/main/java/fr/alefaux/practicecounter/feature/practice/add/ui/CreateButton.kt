@@ -12,14 +12,14 @@ import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 @Composable
 fun CreateButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     ElevatedButton(
         modifier = modifier,
         onClick = onClick,
         content = {
             Text(text = "Créer")
-        }
+        },
     )
 }
 
@@ -30,7 +30,7 @@ private fun CreateButtonPreview() {
     AppTheme {
         Surface {
             CreateButton(
-                onClick = {}
+                onClick = {},
             )
         }
     }

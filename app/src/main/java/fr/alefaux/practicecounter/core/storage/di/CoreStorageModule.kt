@@ -14,20 +14,18 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object CoreStorageModule {
-
     @Provides
     @Singleton
     fun providePracticeCounterDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): PracticeCounterDatabase =
-        Room.databaseBuilder(
-            context,
-            PracticeCounterDatabase::class.java,
-            "practice-counter"
-        ).build()
+        Room
+            .databaseBuilder(
+                context,
+                PracticeCounterDatabase::class.java,
+                "practice-counter",
+            ).build()
 
     @Provides
-    fun providePracticeDao(
-        practiceCounterDatabase: PracticeCounterDatabase
-    ): PracticeDao = practiceCounterDatabase.practiceDao()
+    fun providePracticeDao(practiceCounterDatabase: PracticeCounterDatabase): PracticeDao = practiceCounterDatabase.practiceDao()
 }

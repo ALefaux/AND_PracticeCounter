@@ -17,20 +17,20 @@ import fr.alefaux.practicecounter.practice.list.ui.PracticeItem
 fun PracticeList(
     onPracticeClicked: (PracticeUi) -> Unit,
     practices: List<PracticeUi>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
         modifier = modifier,
         columns = GridCells.Fixed(2),
         horizontalArrangement = Arrangement.spacedBy(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         items(practices) { practice ->
             PracticeItem(
                 name = practice.name,
                 onClick = {
                     onPracticeClicked(practice)
-                }
+                },
             )
         }
     }
@@ -43,16 +43,17 @@ private fun PracticeListPreview() {
     AppTheme {
         PracticeList(
             onPracticeClicked = {},
-            practices = listOf(
-                PracticeUi("Push-up"),
-                PracticeUi("Squat"),
-                PracticeUi("Burpees"),
-                PracticeUi("Push-up"),
-                PracticeUi("Squat"),
-                PracticeUi("Burpees"),
-                PracticeUi("Push-up"),
-                PracticeUi("Squat")
-            )
+            practices =
+                listOf(
+                    PracticeUi("Push-up"),
+                    PracticeUi("Squat"),
+                    PracticeUi("Burpees"),
+                    PracticeUi("Push-up"),
+                    PracticeUi("Squat"),
+                    PracticeUi("Burpees"),
+                    PracticeUi("Push-up"),
+                    PracticeUi("Squat"),
+                ),
         )
     }
 }

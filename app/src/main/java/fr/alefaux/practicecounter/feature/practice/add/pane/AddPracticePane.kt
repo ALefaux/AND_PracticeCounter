@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +12,6 @@ import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
-import fr.alefaux.practicecounter.feature.practice.add.ui.AddPracticeTopBar
 import fr.alefaux.practicecounter.feature.practice.add.ui.CreateButton
 import fr.alefaux.practicecounter.feature.practice.add.ui.ObjectiveField
 import fr.alefaux.practicecounter.feature.practice.add.ui.TitleField
@@ -26,34 +24,36 @@ fun AddPracticePane(
     onTitleChanged: (String) -> Unit,
     title: String,
     modifier: Modifier = Modifier,
-    onBackClicked: () -> Unit
+    onBackClicked: () -> Unit,
 ) {
     Column(
-        modifier = modifier
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier =
+            modifier
+                .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             TitleField(
                 onValueChanged = onTitleChanged,
-                value = title
+                value = title,
             )
             ObjectiveField(
                 onValueChanged = onObjectiveChanged,
-                value = objective
+                value = objective,
             )
         }
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.End,
         ) {
             CreateButton(
-                onClick = onCreateClicked
+                onClick = onCreateClicked,
             )
         }
     }
@@ -70,7 +70,7 @@ private fun AddPracticePanePreview() {
                 onCreateClicked = {},
                 onObjectiveChanged = {},
                 onTitleChanged = {},
-                title = "Pompe"
+                title = "Pompe",
             ) {}
         }
     }

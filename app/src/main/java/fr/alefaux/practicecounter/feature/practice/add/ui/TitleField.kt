@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
@@ -16,7 +15,7 @@ import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 fun TitleField(
     onValueChanged: (String) -> Unit,
     value: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
@@ -25,10 +24,10 @@ fun TitleField(
         },
         placeholder = {
             Text(
-                text = "Titre de l'activité"
+                text = "Titre de l'activité",
             )
         },
-        value = value
+        value = value,
     )
 }
 
@@ -41,7 +40,7 @@ private fun TitleFieldPreview() {
             TitleField(
                 modifier = Modifier.padding(),
                 onValueChanged = {},
-                value = ""
+                value = "",
             )
         }
     }

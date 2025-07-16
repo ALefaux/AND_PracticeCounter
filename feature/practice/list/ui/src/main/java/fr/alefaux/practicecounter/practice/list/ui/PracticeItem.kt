@@ -19,18 +19,18 @@ import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 fun PracticeItem(
     onClick: () -> Unit,
     name: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier
-            .aspectRatio(1f)
-            .background(
-                color = MaterialTheme.colorScheme.primaryContainer
-            )
-            .clickable {
-                onClick()
-            },
-        contentAlignment = Alignment.Center
+        modifier =
+            modifier
+                .aspectRatio(1f)
+                .background(
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                ).clickable {
+                    onClick()
+                },
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -48,7 +48,7 @@ private fun PracticeItemPreview() {
         PracticeItem(
             modifier = Modifier.width(300.dp),
             onClick = {},
-            name = "Push-up"
+            name = "Push-up",
         )
     }
 }

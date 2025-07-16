@@ -6,5 +6,5 @@ import fr.alefaux.practicecounter.feature.practice.add.domain.model.AddPractice
 fun AddPractice.toEntity(): PracticeEntity =
     PracticeEntity(
         title = title,
-        objective = objective
+        objective = objective,
     )

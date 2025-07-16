@@ -14,23 +14,24 @@ import androidx.compose.ui.Modifier
 @Composable
 fun AddPracticeTopBar(
     onBackClicked: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     TopAppBar(
         modifier = modifier,
         navigationIcon = {
             Icon(
-                modifier = Modifier.clickable {
-                    onBackClicked()
-                },
+                modifier =
+                    Modifier.clickable {
+                        onBackClicked()
+                    },
                 contentDescription = null,
-                imageVector = Icons.AutoMirrored.TwoTone.ArrowBack
+                imageVector = Icons.AutoMirrored.TwoTone.ArrowBack,
             )
         },
         title = {
             Text(
-                text = "Ajouter une pratique"
+                text = "Ajouter une pratique",
             )
-        }
+        },
     )
 }
