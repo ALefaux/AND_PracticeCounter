@@ -9,28 +9,26 @@ import kotlinx.coroutines.flow.map
 import java.util.Date
 import javax.inject.Inject
 
-class GetHomeDataUseCaseImpl
-    @Inject
-    constructor(
-        private val homeRepository: HomeRepository,
-    ) : GetHomeDataUseCase {
-        override suspend operator fun invoke(dateNow: Date): Flow<HomeData> =
-            homeRepository
-                .getAllPracticeWithSeances()
-                .map { practiceWithSeancesList ->
-                    val practices: List<Practice> =
-                        practiceWithSeancesList.map { practiceWithSeances ->
-                            Practice(
-                                practiceEntity = practiceWithSeances.practice,
-                                seanceEntities =
-                                    practiceWithSeances.seances.filter { seance ->
-                                        seance.date == dateNow.toDateEntity()
-                                    },
-                            )
-                        }
+class GetHomeDataUseCaseImpl @Inject constructor(
+    private val homeRepository: HomeRepository,
+) : GetHomeDataUseCase {
+    override suspend operator fun invoke(dateNow: Date): Flow<HomeData> =
+        homeRepository
+            .getAllPracticeWithSeances()
+            .map { practiceWithSeancesList ->
+                val practices: List<Practice> =
+                    practiceWithSeancesList.map { practiceWithSeances ->
+                        Practice(
+                            practiceEntity = practiceWithSeances.practice,
+                            seanceEntities =
+                                practiceWithSeances.seances.filter { seance ->
+                                    seance.date == dateNow.toDateEntity()
+                                },
+                        )
+                    }
 
-                    HomeData(
-                        practicesOfTheDay = practices,
-                    )
-                }
-    }
+                HomeData(
+                    practicesOfTheDay = practices,
+                )
+            }
+}

@@ -9,13 +9,14 @@ import fr.alefaux.practicecounter.core.utils.navigation.LocalTopBarInfo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PracticeCounterTopBar(modifier: Modifier = Modifier) {
-    val info = LocalTopBarInfo.current
-
+fun PracticeCounterTopBar(
+    title: String,
+    modifier: Modifier = Modifier
+) {
     MediumTopAppBar(
         modifier = modifier,
         title = {
-            Text(text = info.title)
+            Text(text = title)
         },
     )
 }

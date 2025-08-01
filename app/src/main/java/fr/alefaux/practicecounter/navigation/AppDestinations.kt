@@ -21,8 +21,11 @@ internal sealed interface AppRoutes :
 
         data object Detail : Practice, Route, RouteTemplate {
             override val template: RouteTemplate = this
+            const val PARAM_ID = "id"
 
-            override fun constructTemplateRoute(): String = "app/practice/detail"
+            override fun constructTemplateRoute(): String = "app/practice/detail/{$PARAM_ID}"
+
+            fun constructRoute(id: Int): String = "app/practice/detail/$id"
         }
     }
 }

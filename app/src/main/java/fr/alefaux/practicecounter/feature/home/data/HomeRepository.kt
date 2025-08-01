@@ -5,4 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
     suspend fun getAllPracticeWithSeances(): Flow<List<PracticeWithSeances>>
+
+    suspend fun deletePracticeById(id: Int)
 }

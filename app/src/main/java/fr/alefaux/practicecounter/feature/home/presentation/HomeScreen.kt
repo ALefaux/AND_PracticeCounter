@@ -27,38 +27,36 @@ fun HomeScreen(
     navController: NavController = LocalNavHostController.current,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val topBarInfo =
-        remember {
-            PracticeCounterTopBarInfo(
-                title = "Activités du jour",
-            )
-        }
+    LocalTopBarInfo.current.title = "Activités du jour"
 
-    CompositionLocalProvider(
-        LocalTopBarInfo provides topBarInfo,
+    Column(
+        modifier = modifier
     ) {
-        Column {
-            HomeState(
-                modifier = modifier.weight(1f),
-                onPracticeClicked = {},
-                state = viewModel.uiState.collectAsStateWithLifecycle().value,
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End,
-            ) {
-                Button(
-                    modifier = Modifier.padding(16.dp),
-                    onClick = {
-                        navController.navigate(
-                            route = AppRoutes.Practice.Add.constructTemplateRoute(),
-                        )
-                    },
-                ) {
-                    Text(
-                        text = "Ajouter",
+        HomeState(
+            modifier = Modifier.weight(1f),
+            onDeleteClicked = { id ->
+                viewModel.deletePractice(id)
+            },
+            onPracticeClicked = { id ->
+                navController.navigate(AppRoutes.Practice.Detail.constructRoute(id))
+            },
+            state = viewModel.uiState.collectAsStateWithLifecycle().value,
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End,
+        ) {
+            Button(
+                modifier = Modifier.padding(16.dp),
+                onClick = {
+                    navController.navigate(
+                        route = AppRoutes.Practice.Add.constructTemplateRoute(),
                     )
-                }
+                },
+            ) {
+                Text(
+                    text = "Ajouter",
+                )
             }
         }
     }
