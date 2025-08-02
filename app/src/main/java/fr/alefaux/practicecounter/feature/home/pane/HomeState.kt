@@ -12,6 +12,7 @@ import fr.alefaux.practicecounter.feature.home.modelui.HomeUiState
 
 @Composable
 fun HomeState(
+    onDeleteClicked: (practiceId: Int) -> Unit,
     onPracticeClicked: (practiceId: Int) -> Unit,
     state: HomeUiState,
     modifier: Modifier = Modifier,
@@ -27,6 +28,7 @@ fun HomeState(
         is HomeUiState.Success ->
             HomePane(
                 modifier = modifier,
+                onDeleteClicked = onDeleteClicked,
                 onPracticeClicked = onPracticeClicked,
                 practicesOfTheDay = state.practicesOfTheDay,
             )

@@ -20,6 +20,7 @@ import fr.alefaux.practicecounter.feature.home.ui.Tile
 
 @Composable
 fun HomePane(
+    onDeleteClicked: (practiceId: Int) -> Unit,
     onPracticeClicked: (practiceId: Int) -> Unit,
     practicesOfTheDay: List<PracticeUi>,
     modifier: Modifier = Modifier,
@@ -35,14 +36,15 @@ fun HomePane(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(practicesOfTheDay) { practice ->
-                Tile.Neutral(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                onPracticeClicked(practice.id)
-                            },
+                Tile(
+                    modifier = Modifier.fillMaxWidth(),
                     objective = practice.objective,
+                    onDeleteClicked = {
+                        onDeleteClicked(practice.id)
+                    },
+                    onTileClicked = {
+                        onPracticeClicked(practice.id)
+                    },
                     number = practice.number,
                     title = practice.title,
                 )
@@ -57,6 +59,7 @@ fun HomePane(
 private fun HomePanePreview() {
     AppTheme {
         HomePane(
+            onDeleteClicked = {},
             onPracticeClicked = {},
             practicesOfTheDay = listOf(mockPracticeUi),
         )

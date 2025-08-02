@@ -10,9 +10,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import fr.alefaux.practicecounter.core.components.PracticeCounterTopBar
+import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 import fr.alefaux.practicecounter.core.utils.navigation.LocalNavHostController
 import fr.alefaux.practicecounter.core.utils.navigation.LocalSnackbarHostState
+import fr.alefaux.practicecounter.core.utils.navigation.LocalTopBarInfo
 
 @Composable
 fun MainRootView(
@@ -20,10 +22,12 @@ fun MainRootView(
     content: @Composable (PaddingValues) -> Unit,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
+    val topBarInfo = remember { PracticeCounterTopBarInfo() }
 
     CompositionLocalProvider(
         LocalNavHostController provides rememberNavController(),
-        LocalSnackbarHostState provides snackbarHostState
+        LocalSnackbarHostState provides snackbarHostState,
+        LocalTopBarInfo provides topBarInfo
     ) {
         AppTheme {
             Scaffold(
@@ -33,7 +37,11 @@ fun MainRootView(
                     SnackbarHost(snackbarHostState)
                 },
                 topBar = {
-                    PracticeCounterTopBar()
+                    topBarInfo.title?.let { title ->
+                        PracticeCounterTopBar(
+                            title = title
+                        )
+                    }
                 },
             )
         }
