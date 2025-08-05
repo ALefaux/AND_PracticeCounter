@@ -1,12 +1,17 @@
 package fr.alefaux.practicecounter.feature.practice.add.presentation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.twotone.Warning
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MediumTopAppBar
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,13 +34,14 @@ import fr.alefaux.practicecounter.feature.practice.add.pane.AddPracticePane
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddPracticeScreen(
     modifier: Modifier = Modifier,
     navController: NavController = LocalNavHostController.current,
     viewModel: AddPracticeViewModel = hiltViewModel(),
 ) {
-    val snackbarHostState = LocalSnackbarHostState.current
+    val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     var errorMessageAlert: String? by remember { mutableStateOf(null) }
 
@@ -81,22 +87,36 @@ fun AddPracticeScreen(
             },
         )
     }
-
-    CompositionLocalProvider(
-        LocalTopBarInfo provides
-                PracticeCounterTopBarInfo(
-                    title = "Ajouter une pratique",
-                ),
-    ) {
-        Column {
-            IconButton(
-                onClick = navController::navigateUp,
-            ) {
-                Icon(
-                    contentDescription = null,
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                )
-            }
+    Scaffold(
+        modifier = modifier,
+        snackbarHost = {
+            SnackbarHost(snackbarHostState)
+        },
+        topBar = {
+            MediumTopAppBar(
+                navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            navController.navigateUp()
+                        }
+                    ) {
+                        Icon(
+                            contentDescription = null,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        )
+                    }
+                },
+                title = {
+                    Text(
+                        text = "Ajouter une pratique"
+                    )
+                }
+            )
+        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier.padding(innerPadding)
+        ) {
             AddPracticePane(
                 modifier = modifier,
                 objective = viewModel.objective,
