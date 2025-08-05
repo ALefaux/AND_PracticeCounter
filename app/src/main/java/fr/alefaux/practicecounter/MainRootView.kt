@@ -18,32 +18,13 @@ import fr.alefaux.practicecounter.core.utils.navigation.LocalTopBarInfo
 
 @Composable
 fun MainRootView(
-    modifier: Modifier = Modifier,
-    content: @Composable (PaddingValues) -> Unit,
+    content: @Composable () -> Unit
 ) {
-    val snackbarHostState = remember { SnackbarHostState() }
-    val topBarInfo = remember { PracticeCounterTopBarInfo() }
-
     CompositionLocalProvider(
         LocalNavHostController provides rememberNavController(),
-        LocalSnackbarHostState provides snackbarHostState,
-        LocalTopBarInfo provides topBarInfo
     ) {
         AppTheme {
-            Scaffold(
-                modifier = modifier,
-                content = content,
-                snackbarHost = {
-                    SnackbarHost(snackbarHostState)
-                },
-                topBar = {
-                    topBarInfo.title?.let { title ->
-                        PracticeCounterTopBar(
-                            title = title
-                        )
-                    }
-                },
-            )
+            content()
         }
     }
 }

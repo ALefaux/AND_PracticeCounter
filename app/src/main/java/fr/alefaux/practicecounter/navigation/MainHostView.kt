@@ -14,12 +14,11 @@ import fr.alefaux.practicecounter.feature.practice.detail.PracticeDetailScreen
 
 @Composable
 fun MainHostView() {
-    MainRootView { innerPadding ->
+    MainRootView {
         NavHost(
             modifier =
                 Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding),
+                    .fillMaxSize(),
             navController = LocalNavHostController.current,
             startDestination = AppRoutes.Home.constructFinalRoute(),
         ) {
