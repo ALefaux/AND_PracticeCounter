@@ -50,9 +50,6 @@ android {
 dependencies {
     implementation(projects.core.designsystem)
 
-    // implementation(projects.feature.practice.add.presentation)
-    // implementation(projects.feature.home.presentation)
-
     implementation(libs.androidx.core.ktx)
 
     // Compose
@@ -75,4 +72,8 @@ dependencies {
     // Material Icons
     implementation(libs.androidx.compose.material.core)
     implementation(libs.androidx.compose.material.extended)
+
+    // Flocon
+    debugImplementation(libs.flocon)
+
 }
