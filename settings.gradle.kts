@@ -24,6 +24,9 @@ rootProject.name = "Practice-Counter"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 include(":core:designsystem")
+include(":core:components")
+include(":core:model")
+include(":core:navigation")
 
 // Practice list
 include(
@@ -47,5 +50,16 @@ include(
     ":feature:practice:add:presentation",
     ":feature:practice:add:data",
 )
+
+// Practice detail
+include(
+    ":feature:practice:detail:data",
+    ":feature:practice:detail:domain",
+    ":feature:practice:detail:di",
+    ":feature:practice:detail:modelui",
+    ":feature:practice:detail:panes",
+    ":feature:practice:detail:presentation",
+)
+
 include(":core:storage")
 include(":feature:home:data")

@@ -1,28 +1,28 @@
 package plugins
 
 import fr.alefaux.buildlogic.configureModule
+import fr.alefaux.buildlogic.extensions.implementation
 import fr.alefaux.buildlogic.extensions.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-class DIConventionPlugin : Plugin<Project> {
+class DiConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
-                apply("org.jlleitschuh.gradle.ktlint")
-                apply("decathlon.android.test")
+                apply("com.google.devtools.ksp")
+                apply("dagger.hilt.android.plugin")
             }
 
             configureModule()
 
             dependencies {
-                add("implementation", libs.findBundle("koin").get())
-                add("implementation", libs.findLibrary("koin.compose").get())
-                add("implementation", libs.findBundle("koin.test.junit").get())
-                add("testImplementation", libs.findLibrary("koin.test").get())
+                implementation(libs.findLibrary("hilt-android").get())
+                implementation(libs.findLibrary("hilt-navigation-compose").get())
+                "ksp"(libs.findLibrary("hilt-compiler").get())
             }
         }
     }

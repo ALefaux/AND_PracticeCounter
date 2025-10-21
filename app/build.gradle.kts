@@ -49,6 +49,15 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
+    implementation(projects.core.storage)
+    implementation(projects.core.components)
+    implementation(projects.core.navigation)
+
+    // Feature modules
+    implementation(projects.feature.home.presentation)
+    implementation(projects.feature.practice.add.presentation)
+    implementation(projects.feature.practice.detail.presentation)
+    implementation(projects.feature.practice.detail.di)
 
     implementation(libs.androidx.core.ktx)
 

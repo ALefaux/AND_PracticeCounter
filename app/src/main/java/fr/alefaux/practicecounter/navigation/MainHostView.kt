@@ -6,8 +6,9 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import fr.alefaux.practicecounter.MainRootView
-import fr.alefaux.practicecounter.core.utils.navigation.LocalNavHostController
+import fr.alefaux.practicecounter.core.navigation.AppRoutes
+import fr.alefaux.practicecounter.core.navigation.LocalNavHostController
+import fr.alefaux.practicecounter.core.navigation.MainRootView
 import fr.alefaux.practicecounter.feature.home.presentation.HomeScreen
 import fr.alefaux.practicecounter.feature.practice.add.presentation.AddPracticeScreen
 import fr.alefaux.practicecounter.feature.practice.detail.presentation.PracticeDetailScreen
