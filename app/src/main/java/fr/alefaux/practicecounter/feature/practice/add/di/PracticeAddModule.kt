@@ -8,7 +8,7 @@ import fr.alefaux.practicecounter.core.storage.practice.PracticeDao
 import fr.alefaux.practicecounter.feature.practice.add.data.AddPracticeRepository
 import fr.alefaux.practicecounter.feature.practice.add.data.AddPracticeRepositoryImpl
 import fr.alefaux.practicecounter.feature.practice.add.domain.CreatePracticeUseCase
-import fr.alefaux.practicecounter.feature.practice.add.domain.CreatePracticeUseCaseImpl
+import fr.alefaux.practicecounter.feature.practice.add.data.CreatePracticeUseCaseImpl
 
 @Module
 @InstallIn(ViewModelComponent::class)

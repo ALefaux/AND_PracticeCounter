@@ -9,6 +9,7 @@ class DataLocalConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply {
                 apply("com.android.library")
+                apply("org.jetbrains.kotlin.android")
             }
 
             configureModule()

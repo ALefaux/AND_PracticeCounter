@@ -19,10 +19,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
-import fr.alefaux.practicecounter.core.utils.navigation.LocalNavHostController
-import fr.alefaux.practicecounter.core.utils.navigation.LocalTopBarInfo
+import fr.alefaux.practicecounter.core.navigation.LocalNavHostController
+import fr.alefaux.practicecounter.core.navigation.LocalTopBarInfo
+import fr.alefaux.practicecounter.core.navigation.AppRoutes
 import fr.alefaux.practicecounter.feature.home.pane.HomeState
-import fr.alefaux.practicecounter.navigation.AppRoutes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

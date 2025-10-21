@@ -12,8 +12,8 @@ class HomeRepositoryImpl @Inject constructor(
         practiceDao.getAllWithSeances()
 
     override suspend fun deletePracticeById(id: Int) {
-        practiceDao.findById(id).also { practice ->
-            practiceDao.delete(practice)
+        practiceDao.findById(id)?.also { practice ->
+            practiceDao.delete(practice.practice)
         }
     }
 }
