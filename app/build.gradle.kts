@@ -52,6 +52,7 @@ dependencies {
     implementation(projects.core.storage)
     implementation(projects.core.components)
     implementation(projects.core.navigation)
+    implementation(projects.core.utils)
 
     // Feature modules
     implementation(projects.feature.home.presentation)
