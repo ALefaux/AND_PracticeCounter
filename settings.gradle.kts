@@ -27,6 +27,7 @@ include(":core:designsystem")
 include(":core:components")
 include(":core:model")
 include(":core:navigation")
+include(":core:utils")
 
 // Practice list
 include(

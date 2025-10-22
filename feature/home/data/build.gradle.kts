@@ -9,4 +9,5 @@ android {
 
 dependencies {
     implementation(projects.core.storage)
+    implementation(projects.core.utils)
 }
