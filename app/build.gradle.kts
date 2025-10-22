@@ -56,6 +56,7 @@ dependencies {
 
     // Feature modules
     implementation(projects.feature.home.presentation)
+    implementation(projects.feature.home.di)
     implementation(projects.feature.practice.add.presentation)
     implementation(projects.feature.practice.detail.presentation)
     implementation(projects.feature.practice.detail.di)

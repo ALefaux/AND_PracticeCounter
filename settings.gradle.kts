@@ -39,8 +39,12 @@ include(
 
 // Home
 include(
-    ":feature:home:presentation",
+    ":feature:home:data",
+    ":feature:home:domain",
+    ":feature:home:di",
+    ":feature:home:modelui",
     ":feature:home:panes",
+    ":feature:home:presentation",
     ":feature:home:ui",
 )
 
@@ -63,4 +67,3 @@ include(
 )
 
 include(":core:storage")
-include(":feature:home:data")
