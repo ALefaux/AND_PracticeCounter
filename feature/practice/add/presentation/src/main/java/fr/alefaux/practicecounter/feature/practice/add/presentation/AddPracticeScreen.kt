@@ -30,7 +30,7 @@ import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
 import fr.alefaux.practicecounter.core.navigation.LocalNavHostController
 import fr.alefaux.practicecounter.core.navigation.LocalSnackbarHostState
 import fr.alefaux.practicecounter.core.navigation.LocalTopBarInfo
-import fr.alefaux.practicecounter.feature.practice.add.pane.AddPracticePane
+import fr.alefaux.practicecounter.feature.practice.add.panes.AddPracticePane
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

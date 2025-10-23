@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "fr.alefaux.practicecounter.feature.add.panes"
+    namespace = "fr.alefaux.practicecounter.feature.practice.add.panes"
 }
 
 dependencies {

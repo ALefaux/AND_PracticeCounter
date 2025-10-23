@@ -50,10 +50,13 @@ include(
 
 // Practice add
 include(
-    ":feature:practice:add:ui",
+    ":feature:practice:add:data",
+    ":feature:practice:add:domain",
+    ":feature:practice:add:di",
+    ":feature:practice:add:modelui",
     ":feature:practice:add:panes",
     ":feature:practice:add:presentation",
-    ":feature:practice:add:data",
+    ":feature:practice:add:ui",
 )
 
 // Practice detail

@@ -1,4 +1,4 @@
-package fr.alefaux.practicecounter.feature.practice.add.pane
+package fr.alefaux.practicecounter.feature.practice.add.panes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

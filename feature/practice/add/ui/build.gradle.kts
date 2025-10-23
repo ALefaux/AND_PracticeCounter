@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "fr.alefaux.practicecounter.feature.add.ui"
+    namespace = "fr.alefaux.practicecounter.feature.practice.add.ui"
 }
 
 dependencies {
