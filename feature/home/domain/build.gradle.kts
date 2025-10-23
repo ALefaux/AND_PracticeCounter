@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.practicecounter.data.local)
     alias(libs.plugins.practicecounter.android.hilt)
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "fr.alefaux.practicecounter.feature.home.data"
+    namespace = "fr.alefaux.practicecounter.feature.home.domain"
 }
 
 dependencies {
     implementation(projects.core.storage)
+    implementation(projects.core.model)
     implementation(projects.core.utils)
-    implementation(projects.feature.home.domain)
 }
