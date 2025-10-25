@@ -1,27 +1,54 @@
 package fr.alefaux.practicecounter.core.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
-import fr.alefaux.practicecounter.core.components.PracticeCounterTopBar
-import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainRootView(
     content: @Composable () -> Unit
 ) {
+    val navController = rememberNavController()
+    val itemSelected = remember { mutableIntStateOf(0) }
+
     CompositionLocalProvider(
-        LocalNavHostController provides rememberNavController(),
+        LocalNavHostController provides navController,
     ) {
         AppTheme {
-            content()
+            NavigationSuiteScaffold(
+                navigationSuiteItems = {
+                    AppDestinations.entries.forEachIndexed { index, destination ->
+                        item(
+                            selected = itemSelected.intValue == index,
+                            onClick = {
+                                itemSelected.intValue = index
+                            },
+                            label = {
+                                Text(
+                                    text = stringResource(destination.label)
+                                )
+                            },
+                            icon = {
+                                Icon(
+                                    destination.icon,
+                                    contentDescription = stringResource(destination.contentDescription),
+                                )
+                            }
+                        )
+                    }
+                }
+            ) {
+                content()
+            }
         }
     }
 }

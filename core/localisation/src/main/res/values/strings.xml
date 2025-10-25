@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_home">Accueil</string>
+    <string name="menu_home_description">Menu d\'accueil</string>
+    <string name="menu_list">Liste</string>
+    <string name="menu_list_description">Menu liste des activités</string>
+</resources>

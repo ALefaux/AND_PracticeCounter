@@ -70,3 +70,4 @@ include(
 )
 
 include(":core:storage")
+include(":core:localisation")
