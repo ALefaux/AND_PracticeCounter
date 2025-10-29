@@ -5,4 +5,6 @@ import fr.alefaux.practicecounter.feature.practice.detail.domain.model.Practice
 
 interface PracticeDetailRepository {
     suspend fun findPracticeById(id: Int): Result<Practice>
+
+    suspend fun deletePracticeById(id: Int): Result<Unit>
 }

@@ -19,7 +19,8 @@ fun PracticeDetailStatePane(
             PracticeDetailSuccessPane(
                 modifier = modifier,
                 objective = state.objective,
-                seances = state.seancesUi
+                seances = state.seancesUi,
+                seanceToday = state.seanceToday
             )
         }
         is PracticeDetailState.Error.NotFound -> {

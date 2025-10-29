@@ -9,5 +9,7 @@ android {
 dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.components)
+
     implementation(projects.feature.practice.detail.modelui)
+    implementation(projects.feature.practice.detail.ui)
 }

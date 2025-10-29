@@ -8,6 +8,7 @@ import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.feature.practice.detail.domain.FindPracticeByIdUseCase
 import fr.alefaux.practicecounter.feature.practice.detail.modelui.PracticeDetailState
 import fr.alefaux.practicecounter.core.navigation.AppRoutes
+import fr.alefaux.practicecounter.feature.practice.detail.domain.DeletePracticeByIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PracticeDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    private val deletePracticeByIdUseCase: DeletePracticeByIdUseCase,
     private val findPracticeByIdUseCase: FindPracticeByIdUseCase
 ) : ViewModel() {
 
@@ -30,6 +32,10 @@ class PracticeDetailViewModel @Inject constructor(
     private var _state: MutableStateFlow<PracticeDetailState> =
         MutableStateFlow(PracticeDetailState.Loading)
     val state: StateFlow<PracticeDetailState> = _state
+
+    private var _deletePractice: MutableSharedFlow<Unit> = MutableSharedFlow()
+    val deletePractice: SharedFlow<Unit> = _deletePractice
+
 
     private val id: String = savedStateHandle[AppRoutes.Practice.Detail.PARAM_ID]
         ?: error("Missing movie id")
@@ -52,7 +58,8 @@ class PracticeDetailViewModel @Inject constructor(
                                 _state.emit(
                                     PracticeDetailState.Success(
                                         objective = result.value.objective,
-                                        seancesUi = emptyList()
+                                        seancesUi = emptyList(),
+                                        seanceToday = null
                                     )
                                 )
                             }
@@ -72,6 +79,20 @@ class PracticeDetailViewModel @Inject constructor(
                     Timber.w(error, "Couldn't load practice by id #$id")
                     _state.emit(PracticeDetailState.Error.Unknown)
                 }
+            }
+        }
+    }
+
+    fun deletePractice() {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                deletePracticeByIdUseCase(id.toInt())
+            }.onSuccess {
+                withContext(Dispatchers.Main) {
+                    _deletePractice.emit(Unit)
+                }
+            }.onFailure { error ->
+                Timber.w(error, "Couldn't delete practice by id #$id")
             }
         }
     }

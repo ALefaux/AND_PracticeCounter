@@ -10,13 +10,27 @@ class PracticeDetailRepositoryImpl @Inject constructor(
 ): PracticeDetailRepository {
     override suspend fun findPracticeById(id: Int): Result<Practice> {
         return try {
-            practiceDao.findById(id)?.let {
+            practiceDao.findPracticeAndSeanceById(id)?.let {
                 Result.Success(
                     value = Practice(
                         practiceEntity = it.practice,
                         seanceEntities = it.seances
                     )
                 )
+            } ?: Result.Error.NotFound
+        } catch (e: Exception) {
+            Result.Error.Unknown
+        }
+    }
+
+    override suspend fun deletePracticeById(id: Int): Result<Unit> {
+        return try {
+            practiceDao.findPracticeById(id)?.let { practice ->
+                val updatePractice = practice.copy(
+                    deleted = true
+                )
+                practiceDao.update(updatePractice)
+                Result.Success(Unit)
             } ?: Result.Error.NotFound
         } catch (e: Exception) {
             Result.Error.Unknown
