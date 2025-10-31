@@ -21,6 +21,9 @@ interface PracticeDao {
     @Query("SELECT * FROM PracticeEntity WHERE id = :id LIMIT 1")
     fun findPracticeAndSeanceById(id: Int): PracticeWithSeances?
 
+    @Query("SELECT * FROM PracticeEntity WHERE id = :id LIMIT 1")
+    fun findPracticeAndSeanceByIdFlow(id: Int): Flow<PracticeWithSeances?>
+
     @Insert
     fun insert(practice: PracticeEntity)
 

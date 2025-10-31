@@ -3,23 +3,30 @@ package fr.alefaux.practicecounter.feature.practice.detail.data
 import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.core.storage.practice.PracticeDao
 import fr.alefaux.practicecounter.feature.practice.detail.domain.model.Practice
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class PracticeDetailRepositoryImpl @Inject constructor(
     private val practiceDao: PracticeDao
 ): PracticeDetailRepository {
-    override suspend fun findPracticeById(id: Int): Result<Practice> {
+    override suspend fun findPracticeById(id: Int): Flow<Result<Practice>> {
         return try {
-            practiceDao.findPracticeAndSeanceById(id)?.let {
-                Result.Success(
-                    value = Practice(
-                        practiceEntity = it.practice,
-                        seanceEntities = it.seances
+            practiceDao.findPracticeAndSeanceByIdFlow(id).map { practiceWithSeances ->
+                if (practiceWithSeances == null) {
+                    Result.Error.NotFound
+                } else {
+                    Result.Success(
+                        value = Practice(
+                            practiceEntity = practiceWithSeances.practice,
+                            seanceEntities = practiceWithSeances.seances
+                        )
                     )
-                )
-            } ?: Result.Error.NotFound
+                }
+            }
         } catch (e: Exception) {
-            Result.Error.Unknown
+            flowOf(Result.Error.Unknown)
         }
     }
 

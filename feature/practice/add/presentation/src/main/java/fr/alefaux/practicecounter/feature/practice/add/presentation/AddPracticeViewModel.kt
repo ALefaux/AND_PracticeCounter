@@ -112,7 +112,9 @@ class AddPracticeViewModel @Inject constructor(
                         objective = objective.toIntOrNull(),
                     )
                 }.onSuccess {
-                    _event.emit(AddPracticeEvent.Updated)
+                    withContext(Dispatchers.Main) {
+                        _event.emit(AddPracticeEvent.Updated)
+                    }
                 }.onFailure {
                     Timber.w(it, "Error while updating practice")
                     _event.emit(AddPracticeEvent.Error("Error while updating practice"))

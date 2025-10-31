@@ -45,9 +45,7 @@ class PracticeDetailViewModel @Inject constructor(
 
     private fun loadPracticeById() {
         viewModelScope.launch(Dispatchers.IO) {
-            runCatching {
-                findPracticeByIdUseCase(id.toInt())
-            }.onSuccess { result ->
+            findPracticeByIdUseCase(id.toInt()).collect { result ->
                 withContext(Dispatchers.Main) {
                     when (result) {
                         is Result.Success -> {
@@ -72,11 +70,6 @@ class PracticeDetailViewModel @Inject constructor(
                             _state.emit(PracticeDetailState.Error.Unknown)
                         }
                     }
-                }
-            }.onFailure { error ->
-                withContext(Dispatchers.Main) {
-                    Timber.w(error, "Couldn't load practice by id #$id")
-                    _state.emit(PracticeDetailState.Error.Unknown)
                 }
             }
         }
