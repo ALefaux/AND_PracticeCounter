@@ -13,12 +13,14 @@ import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
 @Composable
 fun TitleField(
+    enabled: Boolean,
     onValueChanged: (String) -> Unit,
     value: String,
     modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
+        enabled = enabled,
         onValueChange = { text ->
             onValueChanged(text)
         },
@@ -39,6 +41,7 @@ private fun TitleFieldPreview() {
         Surface {
             TitleField(
                 modifier = Modifier.padding(),
+                enabled = true,
                 onValueChanged = {},
                 value = "",
             )

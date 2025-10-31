@@ -13,10 +13,13 @@ data class PracticeEntity(
     val title: String,
     @ColumnInfo(name = COLUMN_NAME_OBJECTIVE)
     val objective: Int?,
+    @ColumnInfo(name = COLUMN_NAME_VISIBLE)
+    val deleted: Boolean = false
 ) {
     companion object {
         const val COLUMN_NAME_ID = "id"
         const val COLUMN_NAME_TITLE = "title"
         const val COLUMN_NAME_OBJECTIVE = "objective"
+        const val COLUMN_NAME_VISIBLE = "deleted"
     }
 }

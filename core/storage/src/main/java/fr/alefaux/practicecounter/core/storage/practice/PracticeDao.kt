@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,10 +16,19 @@ interface PracticeDao {
     fun getAllWithSeances(): Flow<List<PracticeWithSeances>>
 
     @Query("SELECT * FROM PracticeEntity WHERE id = :id LIMIT 1")
-    fun findById(id: Int): PracticeWithSeances?
+    fun findPracticeById(id: Int): PracticeEntity?
+
+    @Query("SELECT * FROM PracticeEntity WHERE id = :id LIMIT 1")
+    fun findPracticeAndSeanceById(id: Int): PracticeWithSeances?
+
+    @Query("SELECT * FROM PracticeEntity WHERE id = :id LIMIT 1")
+    fun findPracticeAndSeanceByIdFlow(id: Int): Flow<PracticeWithSeances?>
 
     @Insert
     fun insert(practice: PracticeEntity)
+
+    @Update
+    fun update(practice: PracticeEntity)
 
     @Delete
     fun delete(practice: PracticeEntity)

@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.model)
     implementation(projects.core.storage)
     implementation(projects.feature.practice.add.domain)
 }

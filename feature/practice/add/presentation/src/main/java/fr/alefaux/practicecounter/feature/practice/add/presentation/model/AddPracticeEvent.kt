@@ -1,4 +1,4 @@
-package fr.alefaux.practicecounter.feature.practice.add.presentation
+package fr.alefaux.practicecounter.feature.practice.add.presentation.model
 
 interface AddPracticeEvent {
     data class Error(
@@ -6,4 +6,5 @@ interface AddPracticeEvent {
     ) : AddPracticeEvent
 
     data object Created : AddPracticeEvent
+    data object Updated : AddPracticeEvent
 }

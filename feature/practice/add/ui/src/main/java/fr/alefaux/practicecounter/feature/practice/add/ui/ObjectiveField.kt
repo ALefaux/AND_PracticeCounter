@@ -12,12 +12,14 @@ import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
 @Composable
 fun ObjectiveField(
+    enabled: Boolean,
     onValueChanged: (String) -> Unit,
     value: String,
     modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
+        enabled = enabled,
         onValueChange = { text ->
             onValueChanged(text)
         },
@@ -35,6 +37,7 @@ private fun ObjectiveFieldPreview() {
     AppTheme {
         Surface {
             ObjectiveField(
+                enabled = true,
                 onValueChanged = {},
                 value = "",
             )

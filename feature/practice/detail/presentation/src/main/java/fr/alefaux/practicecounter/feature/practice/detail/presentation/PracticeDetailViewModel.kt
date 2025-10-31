@@ -7,7 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.feature.practice.detail.domain.FindPracticeByIdUseCase
 import fr.alefaux.practicecounter.feature.practice.detail.modelui.PracticeDetailState
-import fr.alefaux.practicecounter.core.navigation.AppRoutes
+import fr.alefaux.practicecounter.core.navigation.FeaturesDestinations
+import fr.alefaux.practicecounter.feature.practice.detail.domain.DeletePracticeByIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PracticeDetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    private val deletePracticeByIdUseCase: DeletePracticeByIdUseCase,
     private val findPracticeByIdUseCase: FindPracticeByIdUseCase
 ) : ViewModel() {
 
@@ -31,8 +33,11 @@ class PracticeDetailViewModel @Inject constructor(
         MutableStateFlow(PracticeDetailState.Loading)
     val state: StateFlow<PracticeDetailState> = _state
 
-    private val id: String = savedStateHandle[AppRoutes.Practice.Detail.PARAM_ID]
-        ?: error("Missing movie id")
+    private var _deletePractice: MutableSharedFlow<Unit> = MutableSharedFlow()
+    val deletePractice: SharedFlow<Unit> = _deletePractice
+
+    val id: String = savedStateHandle[FeaturesDestinations.Practice.Detail.PARAM_ID]
+        ?: error("Missing practice id")
 
     init {
         loadPracticeById()
@@ -40,9 +45,7 @@ class PracticeDetailViewModel @Inject constructor(
 
     private fun loadPracticeById() {
         viewModelScope.launch(Dispatchers.IO) {
-            runCatching {
-                findPracticeByIdUseCase(id.toInt())
-            }.onSuccess { result ->
+            findPracticeByIdUseCase(id.toInt()).collect { result ->
                 withContext(Dispatchers.Main) {
                     when (result) {
                         is Result.Success -> {
@@ -52,7 +55,8 @@ class PracticeDetailViewModel @Inject constructor(
                                 _state.emit(
                                     PracticeDetailState.Success(
                                         objective = result.value.objective,
-                                        seancesUi = emptyList()
+                                        seancesUi = emptyList(),
+                                        seanceToday = null
                                     )
                                 )
                             }
@@ -67,11 +71,20 @@ class PracticeDetailViewModel @Inject constructor(
                         }
                     }
                 }
-            }.onFailure { error ->
+            }
+        }
+    }
+
+    fun deletePractice() {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                deletePracticeByIdUseCase(id.toInt())
+            }.onSuccess {
                 withContext(Dispatchers.Main) {
-                    Timber.w(error, "Couldn't load practice by id #$id")
-                    _state.emit(PracticeDetailState.Error.Unknown)
+                    _deletePractice.emit(Unit)
                 }
+            }.onFailure { error ->
+                Timber.w(error, "Couldn't delete practice by id #$id")
             }
         }
     }

@@ -67,6 +67,7 @@ include(
     ":feature:practice:detail:modelui",
     ":feature:practice:detail:panes",
     ":feature:practice:detail:presentation",
+    ":feature:practice:detail:ui",
 )
 
 include(":core:storage")

@@ -4,7 +4,8 @@ sealed interface PracticeDetailState {
     object Loading : PracticeDetailState
     data class Success(
         val objective: Int?,
-        val seancesUi: List<String>
+        val seancesUi: List<SeanceUi>,
+        val seanceToday: SeanceUi?
     ) : PracticeDetailState
     sealed interface Error : PracticeDetailState {
         data object NotFound: Error

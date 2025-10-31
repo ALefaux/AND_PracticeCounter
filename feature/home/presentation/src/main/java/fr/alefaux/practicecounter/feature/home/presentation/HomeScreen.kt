@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,7 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import fr.alefaux.practicecounter.core.navigation.LocalNavHostController
-import fr.alefaux.practicecounter.core.navigation.AppRoutes
+import fr.alefaux.practicecounter.core.navigation.FeaturesDestinations
 import fr.alefaux.practicecounter.feature.home.pane.HomeState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -29,6 +33,26 @@ fun HomeScreen(
 ) {
     Scaffold(
         modifier = modifier,
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                icon = {
+                    Icon(
+                        contentDescription = null,
+                        imageVector = Icons.TwoTone.Add
+                    )
+                },
+                onClick = {
+                    navController.navigate(
+                        route = FeaturesDestinations.Practice.Add.constructFinalRoute(),
+                    )
+                },
+                text = {
+                    Text(
+                        text = "Ajouter une activité",
+                    )
+                }
+            )
+        },
         topBar = {
             MediumTopAppBar(
                 title = {
@@ -39,36 +63,15 @@ fun HomeScreen(
             )
         }
     ) { innerPadding ->
-        Column(
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            HomeState(
-                modifier = Modifier.weight(1f),
-                onDeleteClicked = { id ->
-                    viewModel.deletePractice(id)
-                },
-                onPracticeClicked = { id ->
-                    navController.navigate(AppRoutes.Practice.Detail.constructRoute(id))
-                },
-                state = viewModel.uiState.collectAsStateWithLifecycle().value,
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End,
-            ) {
-                Button(
-                    modifier = Modifier.padding(16.dp),
-                    onClick = {
-                        navController.navigate(
-                            route = AppRoutes.Practice.Add.constructTemplateRoute(),
-                        )
-                    },
-                ) {
-                    Text(
-                        text = "Ajouter",
-                    )
-                }
-            }
-        }
+        HomeState(
+            modifier = Modifier.padding(innerPadding),
+            onDeleteClicked = { id ->
+                viewModel.deletePractice(id)
+            },
+            onPracticeClicked = { id ->
+                navController.navigate(FeaturesDestinations.Practice.Detail.constructRoute(id))
+            },
+            state = viewModel.uiState.collectAsStateWithLifecycle().value,
+        )
     }
 }
