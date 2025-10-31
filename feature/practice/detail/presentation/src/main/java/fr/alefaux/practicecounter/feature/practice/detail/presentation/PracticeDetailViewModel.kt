@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.feature.practice.detail.domain.FindPracticeByIdUseCase
 import fr.alefaux.practicecounter.feature.practice.detail.modelui.PracticeDetailState
-import fr.alefaux.practicecounter.core.navigation.AppRoutes
+import fr.alefaux.practicecounter.core.navigation.FeaturesDestinations
 import fr.alefaux.practicecounter.feature.practice.detail.domain.DeletePracticeByIdUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -36,9 +36,8 @@ class PracticeDetailViewModel @Inject constructor(
     private var _deletePractice: MutableSharedFlow<Unit> = MutableSharedFlow()
     val deletePractice: SharedFlow<Unit> = _deletePractice
 
-
-    private val id: String = savedStateHandle[AppRoutes.Practice.Detail.PARAM_ID]
-        ?: error("Missing movie id")
+    val id: String = savedStateHandle[FeaturesDestinations.Practice.Detail.PARAM_ID]
+        ?: error("Missing practice id")
 
     init {
         loadPracticeById()

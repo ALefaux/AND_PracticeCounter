@@ -9,7 +9,8 @@ import fr.alefaux.practicecounter.feature.practice.detail.modelui.PracticeDetail
 @Composable
 fun PracticeDetailStatePane(
     state: PracticeDetailState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onEditClick: () -> Unit
 ) {
     when (state) {
         PracticeDetailState.Loading -> LoadingScreen(
@@ -19,6 +20,7 @@ fun PracticeDetailStatePane(
             PracticeDetailSuccessPane(
                 modifier = modifier,
                 objective = state.objective,
+                onEditClick = onEditClick,
                 seances = state.seancesUi,
                 seanceToday = state.seanceToday
             )

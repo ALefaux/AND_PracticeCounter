@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.twotone.Check
 import androidx.compose.material.icons.twotone.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MediumTopAppBar
@@ -30,16 +32,20 @@ import fr.alefaux.practicecounter.core.components.PracticeCounterTopBarInfo
 import fr.alefaux.practicecounter.core.navigation.LocalNavHostController
 import fr.alefaux.practicecounter.core.navigation.LocalSnackbarHostState
 import fr.alefaux.practicecounter.core.navigation.LocalTopBarInfo
+import fr.alefaux.practicecounter.feature.practice.add.modelui.ScreenState
 import fr.alefaux.practicecounter.feature.practice.add.panes.AddPracticePane
+import fr.alefaux.practicecounter.feature.practice.add.panes.CreateButton
+import fr.alefaux.practicecounter.feature.practice.add.panes.UpdateButton
+import fr.alefaux.practicecounter.feature.practice.add.presentation.model.AddPracticeEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddPracticeScreen(
+    viewModel: AddPracticeViewModel,
     modifier: Modifier = Modifier,
     navController: NavController = LocalNavHostController.current,
-    viewModel: AddPracticeViewModel = hiltViewModel(),
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -52,6 +58,12 @@ fun AddPracticeScreen(
                 is AddPracticeEvent.Created -> {
                     scope.launch {
                         snackbarHostState.showSnackbar("Activité créée")
+                        navController.navigateUp()
+                    }
+                }
+                is AddPracticeEvent.Updated -> {
+                    scope.launch {
+                        snackbarHostState.showSnackbar("Activité modifiée")
                         navController.navigateUp()
                     }
                 }
@@ -89,6 +101,17 @@ fun AddPracticeScreen(
     }
     Scaffold(
         modifier = modifier,
+        floatingActionButton = {
+            when (viewModel.screenState) {
+                is ScreenState.Creating -> CreateButton(
+                    onClick = viewModel::onCreateClicked
+                )
+                is ScreenState.Updating -> UpdateButton(
+                    onClick = viewModel::onUpdateClicked
+                )
+                else -> {}
+            }
+        },
         snackbarHost = {
             SnackbarHost(snackbarHostState)
         },
@@ -120,12 +143,9 @@ fun AddPracticeScreen(
             AddPracticePane(
                 modifier = modifier,
                 objective = viewModel.objective,
-                onBackClicked = {
-                    navController.navigateUp()
-                },
-                onCreateClicked = viewModel::onCreateClicked,
                 onObjectiveChanged = viewModel::onObjectiveChanged,
                 onTitleChanged = viewModel::onTitleChanged,
+                screenState = viewModel.screenState,
                 title = viewModel.title,
             )
         }

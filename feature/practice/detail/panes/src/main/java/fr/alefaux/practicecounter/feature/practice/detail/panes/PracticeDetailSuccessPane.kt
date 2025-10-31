@@ -16,7 +16,8 @@ fun PracticeDetailSuccessPane(
     objective: Int?,
     seances: List<SeanceUi>,
     seanceToday: SeanceUi?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onEditClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -24,6 +25,7 @@ fun PracticeDetailSuccessPane(
         if (objective != null || seanceToday != null) {
             SeanceTodayAndObjective(
                 objective = objective,
+                onEditClick = onEditClick,
                 seanceToday = seanceToday?.number
             )
         }
@@ -56,6 +58,6 @@ private fun PracticeDetailSuccessPanePreview() {
                 )
             ),
             seanceToday = null
-        )
+        ) {}
     }
 }

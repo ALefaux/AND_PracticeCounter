@@ -9,7 +9,10 @@ android {
 dependencies {
     implementation(projects.core.components)
     implementation(projects.core.designsystem)
+    implementation(projects.core.model)
     implementation(projects.core.navigation)
+
     implementation(projects.feature.practice.add.domain)
+    implementation(projects.feature.practice.add.modelui)
     implementation(projects.feature.practice.add.panes)
 }
