@@ -6,10 +6,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navOptions
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -18,7 +21,7 @@ fun MainRootView(
     content: @Composable () -> Unit
 ) {
     val navController = rememberNavController()
-    val itemSelected = remember { mutableIntStateOf(0) }
+    var itemSelected: AppDestinations by remember { mutableStateOf(AppDestinations.HOME) }
 
     CompositionLocalProvider(
         LocalNavHostController provides navController,
@@ -26,11 +29,28 @@ fun MainRootView(
         AppTheme {
             NavigationSuiteScaffold(
                 navigationSuiteItems = {
-                    AppDestinations.entries.forEachIndexed { index, destination ->
+                    AppDestinations.entries.forEach { destination ->
                         item(
-                            selected = itemSelected.intValue == index,
+                            selected = itemSelected == destination,
                             onClick = {
-                                itemSelected.intValue = index
+                                itemSelected = destination
+
+                                when (destination) {
+                                    AppDestinations.HOME -> FeaturesDestinations.Home.constructFinalRoute()
+                                    AppDestinations.LIST -> FeaturesDestinations.Practice.List.constructFinalRoute()
+                                }.also { route ->
+                                    navController.navigate(
+                                        route = route,
+                                        navOptions = navOptions {
+                                            popUpTo(navController.graph.startDestinationId) {
+                                                inclusive = true
+                                                saveState = true
+                                            }
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
+                                    )
+                                }
                             },
                             label = {
                                 Text(

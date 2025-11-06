@@ -55,12 +55,18 @@ dependencies {
     implementation(projects.core.utils)
 
     // Feature modules
-    implementation(projects.feature.home.presentation)
+    // Home
     implementation(projects.feature.home.di)
-    implementation(projects.feature.practice.add.presentation)
+    implementation(projects.feature.home.presentation)
+    // Practice Add
     implementation(projects.feature.practice.add.di)
-    implementation(projects.feature.practice.detail.presentation)
+    implementation(projects.feature.practice.add.presentation)
+    // Practice Detail
     implementation(projects.feature.practice.detail.di)
+    implementation(projects.feature.practice.detail.presentation)
+    // Practice List
+    implementation(projects.feature.practice.list.di)
+    implementation(projects.feature.practice.list.presentation)
 
     implementation(libs.androidx.core.ktx)
 

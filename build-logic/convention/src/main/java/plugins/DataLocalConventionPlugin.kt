@@ -4,6 +4,7 @@ import fr.alefaux.buildlogic.configureModule
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
+@Suppress("unused")
 class DataLocalConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {

@@ -31,6 +31,9 @@ include(":core:utils")
 
 // Practice list
 include(
+    ":feature:practice:list:data",
+    ":feature:practice:list:domain",
+    ":feature:practice:list:di",
     ":feature:practice:list:ui",
     ":feature:practice:list:panes",
     ":feature:practice:list:model-ui",

@@ -8,4 +8,5 @@ sealed interface PracticeListUiState {
     data class Success(
         val practices: List<PracticeUi>,
     ) : PracticeListUiState
+    data object Empty: PracticeListUiState
 }

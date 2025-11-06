@@ -11,6 +11,7 @@ fun PracticeListState(
     modifier: Modifier = Modifier,
 ) {
     when (state) {
+        is PracticeListUiState.Empty -> {}
         is PracticeListUiState.Loading -> {}
         is PracticeListUiState.Success -> {
             PracticeListPane(
