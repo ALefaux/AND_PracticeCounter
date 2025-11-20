@@ -1,6 +1,6 @@
 package fr.alefaux.practicecounter.feature.home.data
 
-import fr.alefaux.practicecounter.core.utils.extensions.toDateEntity
+import fr.alefaux.practicecounter.core.utils.extensions.format
 import fr.alefaux.practicecounter.feature.home.domain.GetHomeDataUseCase
 import fr.alefaux.practicecounter.feature.home.domain.model.HomeData
 import fr.alefaux.practicecounter.feature.home.domain.model.Practice
@@ -22,7 +22,7 @@ class GetHomeDataUseCaseImpl @Inject constructor(
                             practiceEntity = practiceWithSeances.practice,
                             seanceEntities =
                                 practiceWithSeances.seances.filter { seance ->
-                                    seance.date == dateNow.toDateEntity()
+                                    seance.date.format() == dateNow.format()
                                 },
                         )
                     }

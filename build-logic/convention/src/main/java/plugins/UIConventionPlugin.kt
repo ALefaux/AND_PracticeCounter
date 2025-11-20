@@ -26,7 +26,6 @@ class UIConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.compose.material3").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling.preview").get())
-                add("implementation", libs.findLibrary("kotlinx.immutable").get())
             }
         }
     }

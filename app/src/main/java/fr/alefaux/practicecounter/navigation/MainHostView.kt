@@ -15,6 +15,7 @@ import fr.alefaux.practicecounter.feature.practice.add.presentation.AddPracticeS
 import fr.alefaux.practicecounter.feature.practice.add.presentation.AddPracticeViewModel
 import fr.alefaux.practicecounter.feature.practice.detail.presentation.PracticeDetailScreen
 import fr.alefaux.practicecounter.feature.practice.detail.presentation.PracticeDetailViewModel
+import fr.alefaux.practicecounter.feature.practice.list.presentation.PracticeListScreen
 
 @Composable
 fun MainHostView() {
@@ -50,6 +51,12 @@ fun MainHostView() {
             ) {
                 val viewModel: PracticeDetailViewModel = hiltViewModel()
                 PracticeDetailScreen(viewModel)
+            }
+
+            composable(
+                route = FeaturesDestinations.Practice.List.constructTemplateRoute()
+            ) {
+                PracticeListScreen()
             }
         }
     }

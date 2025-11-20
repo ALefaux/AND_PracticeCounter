@@ -28,5 +28,11 @@ sealed interface FeaturesDestinations :
 
             fun constructRoute(id: Int): String = "app/practice/detail/$id"
         }
+
+        data object List: Practice, Route, RouteTemplate {
+            override val template: RouteTemplate = this
+
+            override fun constructTemplateRoute(): String = "app/practice/list"
+        }
     }
 }

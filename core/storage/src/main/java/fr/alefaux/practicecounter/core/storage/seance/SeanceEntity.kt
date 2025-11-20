@@ -3,6 +3,7 @@ package fr.alefaux.practicecounter.core.storage.seance
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity
 data class SeanceEntity(
@@ -12,7 +13,7 @@ data class SeanceEntity(
     @ColumnInfo(name = COLUMN_NAME_PRACTICE)
     val practiceAssociatedId: Int,
     @ColumnInfo(name = COLUMN_NAME_DATE)
-    val date: String,
+    val date: Date,
     @ColumnInfo(name = COLUMN_NAME_NUMBER)
     val number: Int,
 ) {
