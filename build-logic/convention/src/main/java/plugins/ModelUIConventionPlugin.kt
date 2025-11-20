@@ -16,8 +16,7 @@ class ModelUIConventionPlugin : Plugin<Project> {
 
             configureModule()
 
-            dependencies {
-                add("implementation", libs.findLibrary("kotlinx.immutable").get())
+            dependencies {add("implementation", libs.findLibrary("kotlinx.collections.immutable").get())
             }
         }
     }

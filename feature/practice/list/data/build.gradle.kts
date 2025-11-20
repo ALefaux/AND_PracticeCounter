@@ -9,8 +9,9 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.storage)
     implementation(projects.core.model)
+    implementation(projects.core.storage)
+    implementation(projects.core.utils)
 
     implementation(projects.feature.practice.list.domain)
 }
