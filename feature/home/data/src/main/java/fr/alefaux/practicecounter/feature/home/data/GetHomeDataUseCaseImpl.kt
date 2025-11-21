@@ -1,6 +1,7 @@
 package fr.alefaux.practicecounter.feature.home.data
 
 import fr.alefaux.practicecounter.core.utils.extensions.format
+import fr.alefaux.practicecounter.feature.home.data.mapper.toDomain
 import fr.alefaux.practicecounter.feature.home.domain.GetHomeDataUseCase
 import fr.alefaux.practicecounter.feature.home.domain.model.HomeData
 import fr.alefaux.practicecounter.feature.home.domain.model.Practice
@@ -16,19 +17,8 @@ class GetHomeDataUseCaseImpl @Inject constructor(
         homeRepository
             .getAllPracticeWithSeances()
             .map { practiceWithSeancesList ->
-                val practices: List<Practice> =
-                    practiceWithSeancesList.map { practiceWithSeances ->
-                        Practice(
-                            practiceEntity = practiceWithSeances.practice,
-                            seanceEntities =
-                                practiceWithSeances.seances.filter { seance ->
-                                    seance.date.format() == dateNow.format()
-                                },
-                        )
-                    }
-
                 HomeData(
-                    practicesOfTheDay = practices,
+                    practicesOfTheDay = practiceWithSeancesList.map { it.toDomain() },
                 )
             }
 }
