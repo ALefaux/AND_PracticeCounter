@@ -8,6 +8,7 @@ android {
 
 dependencies {
     implementation(projects.core.designsystem)
+
     implementation(projects.feature.home.modelui)
     implementation(projects.feature.home.ui)
 }
