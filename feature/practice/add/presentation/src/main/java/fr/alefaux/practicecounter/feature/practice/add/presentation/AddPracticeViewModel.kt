@@ -37,8 +37,8 @@ class AddPracticeViewModel @Inject constructor(
     var title: String by mutableStateOf("")
         private set
 
-    private var _event: MutableSharedFlow<AddPracticeEvent> = MutableSharedFlow()
-    val event: SharedFlow<AddPracticeEvent> = _event
+    val event: SharedFlow<AddPracticeEvent>
+        field = MutableSharedFlow()
 
     private val id: String? = savedStateHandle[FeaturesDestinations.Practice.Add.PARAM_ID]
     val screenState by derivedStateOf {
@@ -91,14 +91,14 @@ class AddPracticeViewModel @Inject constructor(
                     title = ""
                     objective = ""
                     withContext(Dispatchers.Main) {
-                        _event.emit(AddPracticeEvent.Created)
+                        event.emit(AddPracticeEvent.Created)
                     }
                 }.onFailure { error ->
                     Timber.w(error, "Error while creating practice")
-                    _event.emit(AddPracticeEvent.Error("Error while creating practice"))
+                    event.emit(AddPracticeEvent.Error("Error while creating practice"))
                 }
             } else {
-                _event.emit(AddPracticeEvent.Error("Please fill all fields"))
+                event.emit(AddPracticeEvent.Error("Please fill all fields"))
             }
         }
     }
@@ -113,11 +113,11 @@ class AddPracticeViewModel @Inject constructor(
                     )
                 }.onSuccess {
                     withContext(Dispatchers.Main) {
-                        _event.emit(AddPracticeEvent.Updated)
+                        event.emit(AddPracticeEvent.Updated)
                     }
                 }.onFailure {
                     Timber.w(it, "Error while updating practice")
-                    _event.emit(AddPracticeEvent.Error("Error while updating practice"))
+                    event.emit(AddPracticeEvent.Error("Error while updating practice"))
                 }
             }
         }

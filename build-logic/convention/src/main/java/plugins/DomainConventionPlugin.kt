@@ -19,6 +19,7 @@ class DomainConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
+                add("implementation", libs.findLibrary("jakewharton.timber").get())
             }
         }
     }

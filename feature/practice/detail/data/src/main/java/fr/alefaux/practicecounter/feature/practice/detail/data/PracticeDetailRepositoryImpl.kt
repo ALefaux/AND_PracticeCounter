@@ -2,6 +2,7 @@ package fr.alefaux.practicecounter.feature.practice.detail.data
 
 import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.core.storage.practice.PracticeDao
+import fr.alefaux.practicecounter.feature.practice.detail.data.mapper.toDomain
 import fr.alefaux.practicecounter.feature.practice.detail.domain.model.Practice
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -18,10 +19,7 @@ class PracticeDetailRepositoryImpl @Inject constructor(
                     Result.Error.NotFound
                 } else {
                     Result.Success(
-                        value = Practice(
-                            practiceEntity = practiceWithSeances.practice,
-                            seanceEntities = practiceWithSeances.seances
-                        )
+                        value = practiceWithSeances.toDomain()
                     )
                 }
             }

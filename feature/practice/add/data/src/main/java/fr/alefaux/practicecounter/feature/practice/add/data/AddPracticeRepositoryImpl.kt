@@ -2,6 +2,7 @@ package fr.alefaux.practicecounter.feature.practice.add.data
 
 import fr.alefaux.practicecounter.core.model.Result
 import fr.alefaux.practicecounter.core.storage.practice.PracticeDao
+import fr.alefaux.practicecounter.feature.practice.add.data.mapper.toDomain
 import fr.alefaux.practicecounter.feature.practice.add.domain.model.AddPractice
 import fr.alefaux.practicecounter.feature.practice.add.domain.model.Practice
 import javax.inject.Inject
@@ -31,9 +32,7 @@ class AddPracticeRepositoryImpl @Inject constructor(
         return try {
             practiceDao.findPracticeById(id)?.let {
                 Result.Success(
-                    value = Practice(
-                        practiceEntity = it
-                    )
+                    value = it.toDomain()
                 )
             } ?: Result.Error.NotFound
         } catch (e: Exception) {

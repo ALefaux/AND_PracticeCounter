@@ -24,6 +24,7 @@ class DataRemoteConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("squareup.retrofit.rxjava").get())
                 add("implementation", libs.findLibrary("kotlinx.serialization.json").get())
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
+                add("implementation", libs.findLibrary("jakewharton.timber").get())
             }
         }
     }

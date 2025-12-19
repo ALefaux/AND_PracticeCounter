@@ -26,8 +26,8 @@ constructor(
     private val getHomeDataUseCase: GetHomeDataUseCase,
     private val deletePracticeByIdUseCase: DeletePracticeByIdUseCase
 ) : ViewModel() {
-    private var _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState.Loading)
-    val uiState: StateFlow<HomeUiState> = _uiState
+    val uiState: StateFlow<HomeUiState>
+        field = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
 
     private val dateNow: Date = Calendar.getInstance().time
 
@@ -45,7 +45,7 @@ constructor(
                     val isEmpty: Boolean = homeData.practicesOfTheDay.isEmpty()
                     Timber.d("HomeData::isEmpty? $isEmpty")
 
-                    _uiState.update {
+                    uiState.update {
                         if (isEmpty) {
                             HomeUiState.Empty
                         } else {

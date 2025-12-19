@@ -9,6 +9,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
+@Suppress("unused")
 class PanesConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
@@ -23,6 +24,9 @@ class PanesConventionPlugin : Plugin<Project> {
             configureAndroidCompose(extension)
 
             dependencies {
+                add("implementation", project(":core:components"))
+                add("implementation", project(":core:designsystem"))
+
                 add("implementation", libs.findLibrary("androidx.compose.material3").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.tooling.preview").get())

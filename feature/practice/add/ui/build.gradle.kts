@@ -5,7 +5,3 @@ plugins {
 android {
     namespace = "fr.alefaux.practicecounter.feature.practice.add.ui"
 }
-
-dependencies {
-    implementation(projects.core.designsystem)
-}

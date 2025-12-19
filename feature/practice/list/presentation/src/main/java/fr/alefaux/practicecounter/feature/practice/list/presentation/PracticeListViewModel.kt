@@ -19,9 +19,9 @@ import javax.inject.Inject
 class PracticeListViewModel @Inject constructor(
     private val getAllPracticeUseCase: GetAllPracticeUseCase
 ) : ViewModel() {
-    private var _state: MutableStateFlow<PracticeListUiState> =
-        MutableStateFlow(PracticeListUiState.Loading)
-    val state: StateFlow<PracticeListUiState> = _state
+
+    val state: StateFlow<PracticeListUiState>
+        field = MutableStateFlow<PracticeListUiState>(PracticeListUiState.Loading)
 
     init {
         loadPractices()
@@ -41,10 +41,10 @@ class PracticeListViewModel @Inject constructor(
                                 todayExercise = it.today ?: 0
                             )
                         }.toImmutableList().also { practiceUis ->
-                            _state.update { PracticeListUiState.Success(practiceUis) }
+                            state.update { PracticeListUiState.Success(practiceUis) }
                         }
                     } else {
-                        _state.update { PracticeListUiState.Empty }
+                        state.update { PracticeListUiState.Empty }
                     }
                 }
         }

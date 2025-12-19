@@ -1,28 +1,28 @@
 [versions]
-activityCompose = "1.10.1"
+activityCompose = "1.12.1"
 androidCompileSdk = "36"
 androidDesugar = "2.1.5"
-androidGradlePlugin = "8.13.0"
+androidGradlePlugin = "8.13.2"
 androidMinSdk = "26"
 androidTargetSdk = "36"
-androidTools = "31.12.0"
-androidxComposeNavigation = "2.9.3"
-androidxLifecycleViewModelCompose = "2.9.2"
+androidTools = "31.13.2"
+androidxComposeNavigation = "2.9.6"
+androidxLifecycleViewModelCompose = "2.10.0"
 appcompat = "1.7.1"
-appwrite = "8.2.1"
-composeBom = "2025.07.00"
-coreKtx = "1.16.0"
-coroutines = "1.3.9"
-flocon = "1.4.0"
-hilt = "2.57"
-hiltNavigationCompose = "1.2.0"
-kotlin = "2.2.0"
+appwrite = "11.4.0"
+composeBom = "2025.12.00"
+coreKtx = "1.17.0"
+coroutines = "1.10.2"
+flocon = "1.6.4"
+hilt = "2.57.2"
+hiltNavigationCompose = "1.3.0"
+kotlin = "2.3.0"
 kotlinxImmutable = "0.4.0"
 kotlinxSerialization = "1.9.0"
-ksp = "2.2.0-2.0.2"
-material = "1.12.0"
+ksp = "2.3.3"
+material = "1.13.0"
 materialIcons = "1.7.8"
-room = "2.7.2"
+room = "2.8.4"
 timber = "5.0.1"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -93,6 +93,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 practicecounter-android-application = { id = "practicecounter.android.application", version = "unspecified" }
 practicecounter-android-application-compose = { id = "practicecounter.android.application.compose", version = "unspecified" }
 practicecounter-android-hilt = { id = "practicecounter.android.hilt", version = "unspecified" }
+practicecounter-core = { id = "practicecounter.core", version = "unspecified" }
 practicecounter-data-local = { id = "practicecounter.data.local", version = "unspecified" }
 practicecounter-data-remote = { id = "practicecounter.data.remote", version = "unspecified" }
 practicecounter-di = { id = "practicecounter.di", version = "unspecified" }
