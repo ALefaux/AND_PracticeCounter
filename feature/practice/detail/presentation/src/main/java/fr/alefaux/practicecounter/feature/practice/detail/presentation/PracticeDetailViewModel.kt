@@ -26,15 +26,14 @@ class PracticeDetailViewModel @Inject constructor(
     private val findPracticeByIdUseCase: FindPracticeByIdUseCase
 ) : ViewModel() {
 
-    private var _title: MutableSharedFlow<String> = MutableSharedFlow()
-    val title: SharedFlow<String> = _title
+    val title: SharedFlow<String>
+        field = MutableSharedFlow()
 
-    private var _state: MutableStateFlow<PracticeDetailState> =
-        MutableStateFlow(PracticeDetailState.Loading)
-    val state: StateFlow<PracticeDetailState> = _state
+    val state: StateFlow<PracticeDetailState>
+        field = MutableStateFlow<PracticeDetailState>(PracticeDetailState.Loading)
 
-    private var _deletePractice: MutableSharedFlow<Unit> = MutableSharedFlow()
-    val deletePractice: SharedFlow<Unit> = _deletePractice
+    val deletePractice: SharedFlow<Unit>
+        field = MutableSharedFlow()
 
     val id: String = savedStateHandle[FeaturesDestinations.Practice.Detail.PARAM_ID]
         ?: error("Missing practice id")
@@ -49,25 +48,25 @@ class PracticeDetailViewModel @Inject constructor(
                 withContext(Dispatchers.Main) {
                     when (result) {
                         is Result.Success -> {
-                            with(result.value) {
-                                Timber.d("Loaded practice $title #$id")
-                                _title.emit(title)
-                                _state.emit(
-                                    PracticeDetailState.Success(
-                                        objective = result.value.objective,
-                                        seancesUi = emptyList(),
-                                        seanceToday = null
-                                    )
+                            Timber.d("Loaded practice ${result.value.title} #$id")
+                            title.emit(result.value.title)
+                            state.emit(
+                                PracticeDetailState.Success(
+                                    objective = result.value.objective,
+                                    seancesUi = emptyList(),
+                                    seanceToday = null
                                 )
-                            }
+                            )
                         }
+
                         is Result.Error.NotFound -> {
                             Timber.w("Couldn't find practice by id #$id")
-                            _state.emit(PracticeDetailState.Error.NotFound)
+                            state.emit(PracticeDetailState.Error.NotFound)
                         }
+
                         else -> {
                             Timber.w("Result unknown")
-                            _state.emit(PracticeDetailState.Error.Unknown)
+                            state.emit(PracticeDetailState.Error.Unknown)
                         }
                     }
                 }
@@ -81,7 +80,7 @@ class PracticeDetailViewModel @Inject constructor(
                 deletePracticeByIdUseCase(id.toInt())
             }.onSuccess {
                 withContext(Dispatchers.Main) {
-                    _deletePractice.emit(Unit)
+                    deletePractice.emit(Unit)
                 }
             }.onFailure { error ->
                 Timber.w(error, "Couldn't delete practice by id #$id")

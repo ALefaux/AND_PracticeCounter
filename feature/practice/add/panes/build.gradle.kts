@@ -7,8 +7,8 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.designsystem)
-
     implementation(projects.feature.practice.add.modelui)
     implementation(projects.feature.practice.add.ui)
+
+    implementation(libs.androidx.compose.material.core)
 }

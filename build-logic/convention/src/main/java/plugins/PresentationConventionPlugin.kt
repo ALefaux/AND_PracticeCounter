@@ -10,7 +10,9 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
+@Suppress("unused")
 class PresentationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
@@ -25,10 +27,19 @@ class PresentationConventionPlugin : Plugin<Project> {
                 configureModule()
             }
 
+            kotlinExtension.sourceSets.all {
+                languageSettings.enableLanguageFeature("ExplicitBackingFields")
+            }
+
             val extension = extensions.getByType<LibraryExtension>()
             configureAndroidCompose(extension)
 
             dependencies {
+                add("implementation", project(":core:components"))
+                add("implementation", project(":core:designsystem"))
+                add("implementation", project(":core:model"))
+                add("implementation", project(":core:navigation"))
+
                 add("implementation", libs.findLibrary("androidx.compose.material3").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui").get())
                 add("implementation", libs.findLibrary("androidx.compose.ui.graphics").get())
@@ -40,12 +51,13 @@ class PresentationConventionPlugin : Plugin<Project> {
                 )
                 add("implementation", libs.findLibrary("kotlinx.collections.immutable").get())
                 add("debugImplementation", libs.findLibrary("androidx.compose.manifest").get())
-                add("implementation", libs.findLibrary("jakewharton.timber").get())
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
                 implementation(libs.findLibrary("hilt-android").get())
                 implementation(libs.findLibrary("hilt-navigation-compose").get())
                 "ksp"(libs.findLibrary("hilt-compiler").get())
+
+                implementation(libs.findLibrary("jakewharton-timber").get())
             }
         }
     }

@@ -47,6 +47,12 @@ android {
     }
 }
 
+kotlin {
+    sourceSets.all {
+        languageSettings.enableLanguageFeature("ExplicitBackingFields")
+    }
+}
+
 dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.storage)

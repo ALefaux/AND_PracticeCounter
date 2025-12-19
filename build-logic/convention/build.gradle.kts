@@ -78,5 +78,9 @@ gradlePlugin {
             id = "practicecounter.ui"
             implementationClass = "plugins.UIConventionPlugin"
         }
+        register("core") {
+            id = "practicecounter.core"
+            implementationClass = "plugins.CoreConventionPlugin"
+        }
     }
 }
