@@ -22,6 +22,8 @@ dependencies {
     compileOnly(libs.android.tools.common)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+
+    implementation(libs.rocket.convention)
 }
 
 tasks {

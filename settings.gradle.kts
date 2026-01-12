@@ -9,6 +9,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        mavenLocal()
         gradlePluginPortal()
     }
 }
@@ -17,17 +18,29 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
+    }
+    versionCatalogs {
+        create("rocket") {
+            from("fr.alefaux.rocket:versioning:0.1.+")
+        }
     }
 }
 
 rootProject.name = "Practice-Counter"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":core:designsystem")
-include(":core:components")
-include(":core:model")
-include(":core:navigation")
-include(":core:utils")
+
+// Core
+include(
+    ":core:designsystem",
+    ":core:components",
+    ":core:localisation",
+    ":core:model",
+    ":core:navigation",
+    ":core:storage",
+    ":core:utils"
+)
 
 // Practice list
 include(
@@ -72,6 +85,3 @@ include(
     ":feature:practice:detail:presentation",
     ":feature:practice:detail:ui",
 )
-
-include(":core:storage")
-include(":core:localisation")
