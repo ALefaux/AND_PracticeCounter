@@ -37,9 +37,6 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
 
         defaultConfig {
             minSdk = libs.androidMinSdkVersion
-            manifestPlaceholders["memberSDKRedirectScheme"] = "dktappmobile"
-            manifestPlaceholders["memberSDKRedirectLoginPath"] = "auth"
-            manifestPlaceholders["memberSDKRedirectLogoutPath"] = "logout"
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 

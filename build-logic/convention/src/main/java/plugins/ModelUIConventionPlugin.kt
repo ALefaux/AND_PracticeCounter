@@ -1,22 +1,16 @@
 package plugins
 
-import fr.alefaux.buildlogic.configureModule
-import fr.alefaux.buildlogic.extensions.libs
-import org.gradle.api.Plugin
+import fr.alefaux.buildlogic.plugins.RocketModelUiConventionPlugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.dependencies
 
-class ModelUIConventionPlugin : Plugin<Project> {
+@Suppress("unused")
+class ModelUIConventionPlugin : RocketModelUiConventionPlugin() {
     override fun apply(target: Project) {
+        super.apply(target)
+
         with(target) {
             pluginManager.apply {
                 apply("com.android.library")
-                apply("org.jetbrains.kotlin.android")
-            }
-
-            configureModule()
-
-            dependencies {add("implementation", libs.findLibrary("kotlinx.collections.immutable").get())
             }
         }
     }
