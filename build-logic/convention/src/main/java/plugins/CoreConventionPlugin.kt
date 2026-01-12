@@ -1,19 +1,17 @@
 package plugins
 
-import fr.alefaux.buildlogic.configureModule
-import org.gradle.api.Plugin
+import fr.alefaux.buildlogic.plugins.RocketCoreConventionPlugin
 import org.gradle.api.Project
 
 @Suppress("unused")
-class CoreConventionPlugin : Plugin<Project> {
+class CoreConventionPlugin : RocketCoreConventionPlugin() {
     override fun apply(target: Project) {
+        super.apply(target)
+
         with(target) {
             pluginManager.apply {
                 apply("com.android.library")
-                apply("org.jetbrains.kotlin.android")
             }
-
-            configureModule()
         }
     }
 }
