@@ -20,11 +20,6 @@ dependencyResolutionManagement {
         mavenCentral()
         mavenLocal()
     }
-    versionCatalogs {
-        create("rocket") {
-            from("fr.alefaux.rocket:versioning:0.1.+")
-        }
-    }
 }
 
 rootProject.name = "Practice-Counter"

@@ -7,24 +7,3 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
 }
-
-// Configuration to resolve Rocket version
-val rocketVersionResolution by configurations.creating {
-    isCanBeConsumed = false
-    isCanBeResolved = true
-}
-
-dependencies {
-    rocketVersionResolution(libs.rocket.convention)
-}
-
-// Display Rocket version on each build
-gradle.projectsEvaluated {
-    val resolvedVersion = rocketVersionResolution.resolvedConfiguration.firstLevelModuleDependencies
-        .find { it.moduleGroup == "fr.alefaux.rocket" && it.moduleName == "convention" }
-        ?.moduleVersion
-
-    if (resolvedVersion != null) {
-        println("🚀 Rocket version: $resolvedVersion")
-    }
-}
