@@ -2,9 +2,8 @@ package fr.alefaux.practicecounter.feature.practice.list.panes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
@@ -12,7 +11,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 import fr.alefaux.practicecounter.feature.practice.list.modelui.PracticeUi
-import fr.alefaux.practicecounter.practice.list.ui.PracticeItem
+import fr.alefaux.practicecounter.practice.list.ui.item.PracticeItem
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
@@ -23,25 +22,19 @@ fun PracticeList(
     practices: ImmutableList<PracticeUi>,
     modifier: Modifier = Modifier,
 ) {
-    LazyVerticalGrid(
+    LazyColumn(
         modifier = modifier,
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(practices) { practice ->
             PracticeItem(
-                lastExercise = practice.lastExercise,
-                objective = practice.objective,
-                onClick = {
+                practiceCount = practice.todayExercise,
+                practiceLastTime = practice.lastExercise ?: "",
+                practiceName = practice.name,
+                practiceProgress = practice.todayExercise.toFloat() / (practice.objective ?: 0),
+                onAddClick = {
                     onPracticeClick(practice)
-                },
-                onDeleteClicked = {
-                    onDeleteClick(practice)
-                },
-                title = practice.name,
-                todayExercise = practice.todayExercise,
+                }
             )
         }
     }

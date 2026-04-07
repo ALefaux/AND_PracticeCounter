@@ -27,6 +27,7 @@ class UIConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:designsystem"))
 
                 add("implementation", libs.findLibrary("androidx.compose.material.core").get())
+                add("implementation", libs.findLibrary("androidx.compose.material.extended").get())
             }
         }
     }

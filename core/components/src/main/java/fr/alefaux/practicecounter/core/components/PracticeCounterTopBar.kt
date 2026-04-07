@@ -3,6 +3,7 @@ package fr.alefaux.practicecounter.core.components
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
@@ -12,7 +13,7 @@ fun PracticeCounterTopBar(
     title: String,
     modifier: Modifier = Modifier
 ) {
-    MediumTopAppBar(
+    TopAppBar(
         modifier = modifier,
         title = {
             Text(text = title)

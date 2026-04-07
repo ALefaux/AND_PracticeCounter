@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import fr.alefaux.practicecounter.core.designsystem.theme.AppTheme
 
 @Composable
-fun PracticeItem(
+fun OldPracticeItem(
     lastExercise: String?,
     objective: Int?,
     onDeleteClicked: () -> Unit,
@@ -98,9 +98,9 @@ fun PracticeItem(
 @Composable
 @PreviewLightDark
 @PreviewFontScale
-private fun PracticeItemPreview() {
+private fun OldPracticeItemPreview() {
     AppTheme {
-        PracticeItem(
+        OldPracticeItem(
             modifier = Modifier.width(300.dp),
             lastExercise = "22/03/2025",
             objective = 12,
